@@ -1,3 +1,13 @@
+**/.idea
+
+!.config/
+.config/*
+
+!.config/alacritty/
+!.config/picom/
+!.config/qtile/
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

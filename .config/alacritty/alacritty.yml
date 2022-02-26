@@ -1,0 +1,42 @@
+# --==[ Themes ]==--
+import:
+  - ~/.config/alacritty/themes/material_ocean.yaml
+
+# --==[ Fonts ]==--
+# UbuntuMono Nerd Font
+# Mononoki Nerd Font
+
+# --==[ xterm ]==--
+#env:
+  #TERM: xterm-256color
+
+# --==[ Settings ]==--
+window:
+  padding:
+    x: 3
+    y: 2
+
+  opacity: 0.7
+
+scrolling:
+  multiplier: 3
+
+font:
+  # bold:
+  #   family: Mononoki Nerd Font
+  #
+  # italic:
+  #   family: Mononoki Nerd Font
+  #
+  # normal:
+  #   family: Mononoki Nerd Font
+  #   style: Regular
+
+  size: 8.0
+
+cursor:
+  style:
+    shape: Block
+
+mouse:
+  hide_when_typing: true
