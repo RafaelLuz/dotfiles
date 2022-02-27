@@ -1,11 +1,21 @@
 **/.idea
 
+# ============================================================== .config related
 !.config/
 .config/*
 
 !.config/alacritty/
 !.config/picom/
 !.config/qtile/
+
+# ============================================================== .atom related
+!.atom/
+.atom/*
+
+!.atom/config.cson
+!.atom/snippets.cson
+
+
 
 
 # Byte-compiled / optimized / DLL files

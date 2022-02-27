@@ -1,0 +1,55 @@
+"*":
+  "atom-latex":
+    build_after_save: false
+    custom_toolchain: "make filename=main"
+    hide_log_if_success: true
+    preview_after_build: "Do nothing"
+    toolchain: "custom toolchain"
+  "atom-material-ui":
+    colors:
+      abaseColor: "#5080ce"
+    tabs: {}
+    ui:
+      panelContrast: true
+  autosave:
+    enabled: true
+  core:
+    allowPendingPaneItems: false
+    disabledPackages: [
+      "language-gfm"
+    ]
+    restorePreviousWindowsOnStart: "no"
+    telemetryConsent: "limited"
+    themes: [
+      "dracula-ui"
+      "dracula-syntax"
+    ]
+    titleBar: "hidden"
+  editor:
+    fontFamily: "Source Code Pro"
+    showIndentGuide: true
+    softWrap: true
+  "exception-reporting":
+    userId: "e01b324b-e2b1-44ee-8781-5b4300fb113b"
+  "markdown-preview-enhanced":
+    previewTheme: "newsprint.css"
+  "one-dark-ui": {}
+  "one-vibrancy":
+    effect: "ultra-dark"
+  "spell-check":
+    grammars: [
+      "text.tex.latex"
+      "source.rst"
+      "text.restructuredtext"
+    ]
+    locales: [
+      "en-GB"
+      "pt-BR"
+    ]
+    useSystem: false
+  "title-bar-replacer":
+    colors:
+      controlTheme: "Legacy"
+    general: {}
+  welcome:
+    showOnStartup: false
