@@ -8,9 +8,9 @@ ARCH_PACKAGES=(
 	ncdu                  # disk usage
 	feh                   # images
 	rsync                 # for syncing backups
-        alacritty             # terminal emulator
+  alacritty             # terminal emulator
 	vivaldi               # browser
-	vivaldi-ffmpeg-codecs  # vivaldi proprietary codecs
+	vivaldi-ffmpeg-codecs	# vivaldi proprietary codecs
 	telegram-desktop      # chatting
 	texlive-most          # for latex!
 	atom                  # text editor of choice
@@ -22,11 +22,25 @@ AUR_PACKAGES=(
 	bashmount                   # handle external media ('Im not quite sure if I need it)
 	dtrx                        # extract compressed files
 	nerd-fonts-source-code-pro  # nice font for qtile widgets
+	nerd-fonts-ubuntu-mono      # nice font for qtile widgets
+	nerd-fonts-hack             # nice font for qtile widgets
+)
+
+ATOM_PACKAGES=(
+	atom-latex
+	dracula-syntax
+	dracula-ui
+	language-latex
+	language-markdown
+	language-restructuredtext
+	markdown-preview-enhanced
+	right-click-external-app
+	terminus
 )
 
 
+# sudo pacman -S "${ARCH_PACKAGES[@]}" --noconfirm
 
-sudo pacman -S "${ARCH_PACKAGES[@]}" --noconfirm
+# paru -S "${AUR_PACKAGES[@]}" --noconfirm
 
-paru -S "${AUR_PACKAGES[@]}" --noconfirm
-
+apm install "${ATOM_PACKAGES[@]}"
