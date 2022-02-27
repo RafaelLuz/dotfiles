@@ -21,9 +21,10 @@ ARCH_PACKAGES=(
 AUR_PACKAGES=(
 	bashmount                   # handle external media ('Im not quite sure if I need it)
 	dtrx                        # extract compressed files
-	nerd-fonts-source-code-pro  # nice font for qtile widgets
-	nerd-fonts-ubuntu-mono      # nice font for qtile widgets
-	nerd-fonts-hack             # nice font for qtile widgets
+	nerd-fonts-source-code-pro  # nice font
+	nerd-fonts-ubuntu-mono      # nice font
+	nerd-fonts-hack             # nice font
+	ncurses5-compat-libs        # required for pyenv as instructed in https://github.com/pyenv/pyenv/wiki/Common-build-problems
 )
 
 ATOM_PACKAGES=(
@@ -39,8 +40,10 @@ ATOM_PACKAGES=(
 )
 
 
-# sudo pacman -S "${ARCH_PACKAGES[@]}" --noconfirm
+sudo pacman -S "${ARCH_PACKAGES[@]}" --noconfirm
 
-# paru -S "${AUR_PACKAGES[@]}" --noconfirm
+paru -S "${AUR_PACKAGES[@]}" --noconfirm
 
 apm install "${ATOM_PACKAGES[@]}"
+
+curl https://pyenv.run | bash
