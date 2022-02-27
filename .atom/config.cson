@@ -26,13 +26,13 @@
     ]
     titleBar: "hidden"
   editor:
-    fontFamily: "Source Code Pro"
+    fontFamily: "Source Code Pro, Ubuntu Mono, Monospace"
     showIndentGuide: true
     softWrap: true
   "exception-reporting":
     userId: "e01b324b-e2b1-44ee-8781-5b4300fb113b"
   "markdown-preview-enhanced":
-    previewTheme: "newsprint.css"
+    previewTheme: "github-dark.css"
   "one-dark-ui": {}
   "one-vibrancy":
     effect: "ultra-dark"

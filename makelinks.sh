@@ -33,8 +33,6 @@ function create_symbolic_link() {
   fi
 }
 
-
-
 for filename in "${DOTFILES[@]}"; do
 	create_symbolic_link $filename
 done
