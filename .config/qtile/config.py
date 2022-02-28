@@ -294,8 +294,8 @@ screens = [
             # border_width=[0, 0, 0, 0],  # Draw top and bottom borders
             border_color='#000000',
             border_width=0
-        )#,
-        # wallpaper='/home/rafael/Workspace/Pictures/Wallpaper/single'
+        ),
+        wallpaper='/home/rafael/Workspace/Pictures/Wallpaper/single/purple-utopia-1920×1080.jpg'
     )
 ]
 
@@ -321,6 +321,7 @@ floating_layout = layout.Floating(
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
+        Match(title="jetbrains-toolbox"),  # GPG key password entry
     ]
 )
 auto_fullscreen = True
