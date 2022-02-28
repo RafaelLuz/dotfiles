@@ -8,12 +8,13 @@ ARCH_PACKAGES=(
 	ncdu                  # disk usage
 	feh                   # images
 	rsync                 # for syncing backups
-  alacritty             # terminal emulator
+	alacritty             # terminal emulator
 	vivaldi               # browser
 	vivaldi-ffmpeg-codecs	# vivaldi proprietary codecs
 	telegram-desktop      # chatting
 	texlive-most          # for latex!
 	atom                  # text editor of choice
+	xournalpp             # for using wacom one
 	keepassxc             # I'm trying to deprecate this.. use pass instead
 	nano                  # I'm trying to deprecate this.. use neovim instead
 )

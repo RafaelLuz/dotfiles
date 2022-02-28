@@ -295,7 +295,7 @@ screens = [
             border_color='#000000',
             border_width=0
         ),
-        wallpaper='/home/rafael/Workspace/Pictures/Wallpaper/single/purple-utopia-1920×1080.jpg'
+        wallpaper='/home/rafael/Workspace/Pictures/Wallpaper/single/9khyjmypmg471.jpg'
     )
 ]
 
