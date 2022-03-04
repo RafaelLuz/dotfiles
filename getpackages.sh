@@ -17,6 +17,7 @@ ARCH_PACKAGES=(
 	bluez                 # bluetooth protocol
 	bluez-utils           # provides bluetoothctl utility
 	xournalpp             # for using wacom one
+	neovim								# neovim
 	keepassxc             # I'm trying to deprecate this.. use pass instead
 	nano                  # I'm trying to deprecate this.. use neovim instead
 )
