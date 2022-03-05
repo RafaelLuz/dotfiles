@@ -150,13 +150,15 @@ mod = "mod4"
 terminal = guess_terminal()
 
 keys = [
+    Key([mod], "Left", lazy.prev_screen(), desc="Move focus to left"),
+    Key([mod], "Right", lazy.next_screen(), desc="Move focus to right"),
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
     # Switch between windows
-    Key([mod], "Left", lazy.layout.left(), desc="Move focus to left"),
-    Key([mod], "Right", lazy.layout.right(), desc="Move focus to right"),
-    Key([mod], "Down", lazy.layout.down(), desc="Move focus down"),
-    Key([mod], "Up", lazy.layout.up(), desc="Move focus up"),
+    Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
+    Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
+    Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
+    Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
     Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
@@ -199,11 +201,26 @@ vivaldi = Match(wm_class="vivaldi-stable")
 groups = [
     {'name': 'terminal', 'label': '\ue795', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
     {'name': 'python', 'label': '\ue235', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
-    {'name': 'math', 'label': '\ufc06 ', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
+    {'name': 'math', 'label': '\ufc06', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
     {'name': 'internet', 'label': '\ufbdf', 'layouts': [layout.MonadTall(ratio=0.75, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)], 'matches': [telegram, vivaldi]},
     {'name': 'private', 'label': '\ue780', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
-    {'name': 'VBX', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
+    {'name': 'camera', 'label': '\uf5ff', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
+    {'name': 'dotfiles', 'label': '\uf303', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
 ]
+
+def go_to_group(group):
+    def f(qtile):
+        if group in '123':
+            qtile.cmd_to_screen(0)
+            qtile.groupMap[group].cmd_toscreen()
+        elif group in '4567':
+            qtile.cmd_to_screen(1)
+            qtile.groupMap[group].cmd_toscreen()
+        else:
+            qtile.cmd_to_screen(2)
+            qtile.groupMap[group].cmd_toscreen()   
+
+    return f
 
 groups = [Group(**param) for param in groups]
 
@@ -213,7 +230,7 @@ for idx, group in enumerate(groups, start=1):
     name = group.name
 
     keys.append(Key([mod], idxstr, lazy.group[name].toscreen(), desc=f"Switch to group {name}"))
-    keys.append(Key([mod, "shift"], idxstr, lazy.window.togroup(name, switch_group=True), desc=f"Switch to & move focused window to group {name}"))
+    keys.append(Key([mod, "shift"], idxstr, lazy.window.togroup(name, switch_group=False), desc=f"Send windown to group {name}"))
 
 
 layouts = [
@@ -255,7 +272,7 @@ colors = [
 
 # ---------- ---------- ---------- ---------- ---------- ---------- groupbox
 groupbox = widget.GroupBox(
-    fontsize=18,
+    # fontsize=18,
     borderwidth=0,
     active='#F5F5F5',
     inactive="727272",
@@ -264,7 +281,7 @@ groupbox = widget.GroupBox(
     # spacing=1,
     urgent_alert_method='text',
     **colours['groupbox'],
-    # **widget_defaults
+    **widget_defaults
 )
 
 groupbox = WidgetContainer(groupbox)
@@ -276,14 +293,68 @@ screens = [
                 widget.Sep(linewidth=0, padding=2),
                 *ram, widget.Sep(linewidth=0, padding=6),
                 *cpu, widget.Sep(linewidth=0, padding=6),
-                *net, widget.Sep(linewidth=0, padding=6),
+                # *net, widget.Sep(linewidth=0, padding=6),
                 widget.Spacer(),
                 *groupbox,
                 widget.Spacer(),
                 # widget.PulseVolume(),
                 # widget.WindowName(), widget.Sep(linewidth=0, padding=6),
-                *backlight, widget.Sep(linewidth=0, padding=6),
-                *battery, widget.Sep(linewidth=0, padding=6),
+                # *backlight, widget.Sep(linewidth=0, padding=6),
+                # *battery, widget.Sep(linewidth=0, padding=6),
+                # widget.Net(interface='enp0s3'),
+                *clock, widget.Sep(linewidth=0, padding=2)
+            ],
+            size=24,
+            opacity=0.75,
+            background='#00000000',
+            margin=[9, 9, 0, 9],  # N E S W
+            # border_width=[0, 0, 0, 0],  # Draw top and bottom borders
+            border_color='#000000',
+            border_width=0
+        ),
+        wallpaper='/home/rafael/Workspace/Pictures/Wallpaper/single/9khyjmypmg471.jpg'
+    ),
+    Screen(
+        top=bar.Bar(
+            widgets=[
+                widget.Sep(linewidth=0, padding=2),
+                *ram, widget.Sep(linewidth=0, padding=6),
+                *cpu, widget.Sep(linewidth=0, padding=6),
+                # *net, widget.Sep(linewidth=0, padding=6),
+                widget.Spacer(),
+                *groupbox,
+                widget.Spacer(),
+                # widget.PulseVolume(),
+                # widget.WindowName(), widget.Sep(linewidth=0, padding=6),
+                # *backlight, widget.Sep(linewidth=0, padding=6),
+                # *battery, widget.Sep(linewidth=0, padding=6),
+                # widget.Net(interface='enp0s3'),
+                *clock, widget.Sep(linewidth=0, padding=2)
+            ],
+            size=24,
+            opacity=0.75,
+            background='#00000000',
+            margin=[9, 9, 0, 9],  # N E S W
+            # border_width=[0, 0, 0, 0],  # Draw top and bottom borders
+            border_color='#000000',
+            border_width=0
+        ),
+        wallpaper='/home/rafael/Workspace/Pictures/Wallpaper/single/9khyjmypmg471.jpg'
+    ),
+    Screen(
+        top=bar.Bar(
+            widgets=[
+                widget.Sep(linewidth=0, padding=2),
+                *ram, widget.Sep(linewidth=0, padding=6),
+                *cpu, widget.Sep(linewidth=0, padding=6),
+                # *net, widget.Sep(linewidth=0, padding=6),
+                widget.Spacer(),
+                *groupbox,
+                widget.Spacer(),
+                # widget.PulseVolume(),
+                # widget.WindowName(), widget.Sep(linewidth=0, padding=6),
+                # *backlight, widget.Sep(linewidth=0, padding=6),
+                # *battery, widget.Sep(linewidth=0, padding=6),
                 # widget.Net(interface='enp0s3'),
                 *clock, widget.Sep(linewidth=0, padding=2)
             ],
@@ -340,4 +411,4 @@ auto_minimize = True
 #
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
-wmname = "qtile"
+wmname = "LG3D"

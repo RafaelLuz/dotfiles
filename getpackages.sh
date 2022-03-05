@@ -17,7 +17,10 @@ ARCH_PACKAGES=(
 	bluez                 # bluetooth protocol
 	bluez-utils           # provides bluetoothctl utility
 	xournalpp             # for using wacom one
-	neovim								# neovim
+	neovim								# wowowow
+	noto-fonts            # a nice font
+	fuse2                 # it is required to tun AppImages
+	obs-studio            # cameras and recording
 	keepassxc             # I'm trying to deprecate this.. use pass instead
 	nano                  # I'm trying to deprecate this.. use neovim instead
 )
@@ -28,19 +31,22 @@ AUR_PACKAGES=(
 	nerd-fonts-source-code-pro  # nice font
 	nerd-fonts-ubuntu-mono      # nice font
 	nerd-fonts-hack             # nice font
+	nerd-fonts-mononoki         # nice font
+	nerd-fonts-go-mono          # nice font
 	ncurses5-compat-libs        # required for pyenv as instructed in https://github.com/pyenv/pyenv/wiki/Common-build-problems
 )
 
 ATOM_PACKAGES=(
-	atom-latex
-	dracula-syntax
-	dracula-ui
-	language-latex
-	language-markdown
-	language-restructuredtext
-	markdown-preview-enhanced
-	right-click-external-app
-	terminus
+	atom-latex                  # latex utilities
+	dracula-syntax              # theme of choice
+	dracula-ui                  # theme of choice
+	language-latex              # syntax highlight for latex
+	language-markdown           # syntax highlight for markdown
+	language-restructuredtext   # syntax highlight for sphynx
+	language-splunk-conf        # syntax highlight for .conf files
+	markdown-preview-enhanced   # better themes for markdown
+	right-click-external-app    # open .pdf files direct from atom
+	terminus                    # embedded terminal
 )
 
 
