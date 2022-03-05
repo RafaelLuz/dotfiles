@@ -24,7 +24,12 @@ ARCH_PACKAGES=(
 	obs-studio            # cameras and recording
 	neofetch              # this is nice
 	htop									# process monitor
-	keepassxc             # I'm trying to deprecate this.. use pass instead
+	hunspell-en_GB        # english dictionary
+	zathura								# document viewer
+	zathura-pdf-poppler   # pdf support
+	zathura-djvu          # djvu support
+	maim                  # for taking screenshots
+ 	keepassxc             # I'm trying to deprecate this.. use pass instead
 	nano                  # I'm trying to deprecate this.. use neovim instead
 )
 

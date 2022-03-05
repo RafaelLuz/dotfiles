@@ -180,6 +180,25 @@ net = WidgetContainer(net)
 
 
 
+def send_group_to_screen(group):
+
+    def arrange_groups(qtile):
+        if group in ['internet', 'git', 'camera']:
+            qtile.cmd_to_screen(1)
+            qtile.groups_map[group].cmd_toscreen()
+
+        elif group in ['math', 'python', 'books', 'dotfiles']:
+            qtile.cmd_to_screen(0)
+            qtile.groups_map[group].cmd_toscreen()
+
+        else:
+            qtile.cmd_to_screen(2)
+            qtile.groups_map[group].cmd_toscreen()
+
+    return arrange_groups
+
+
+
 
 # ========== ========== ========== ========== ========== ==========
 mod = "mod4"
@@ -226,7 +245,7 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    Key([mod], "w", lazy.group['internet'].toscreen(), desc="change to internet group"),
+    # Key([mod], "w", lazy.function(send_group_to_screen('internet')))), desc="switch to internet group"),
     Key([mod], "Return", lazy.spawn("rofi -show drun -show-icons"), desc="Spawn a command using a prompt widget"),
 ]
 
@@ -234,40 +253,38 @@ keys = [
 telegram = Match(wm_class="telegram-desktop")
 vivaldi = Match(wm_class="vivaldi-stable")
 
+
 groups = [
-    {'name': 'terminal', 'label': '\ue795', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
-    {'name': 'python', 'label': '\ue235', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
-    {'name': 'math', 'label': '\ufc06', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
-    # {'name': 'internet', 'label': '\ufbdf', 'layouts': [layout.MonadTall(ratio=0.75, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)], 'matches': [telegram, vivaldi]},
     {'name': 'internet', 'label': '\ufbdf', 'layouts': [layout.MonadTall(ratio=0.75, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
-    {'name': 'private', 'label': '\ue780', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
+    {'name': 'git', 'label': '\ue725', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
     {'name': 'camera', 'label': '\uf5ff', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
+
+    {'name': 'math', 'label': '\ufc06', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
+    {'name': 'python', 'label': '\ue235', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
+    {'name': 'books', 'label': '\ue28a', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
     {'name': 'dotfiles', 'label': '\uf303', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
+
+    # {'name': 'internet', 'label': '\ufbdf', 'layouts': [layout.MonadTall(ratio=0.75, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)], 'matches': [telegram, vivaldi]},
+
+    {'name': 'document', 'label': '\uf725', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
+    {'name': 'private', 'label': '\ue780', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
+    {'name': 'terminal', 'label': '\ue795', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
 ]
 
-def go_to_group(group):
-    def f(qtile):
-        if group in '123':
-            qtile.cmd_to_screen(0)
-            qtile.groupMap[group].cmd_toscreen()
-        elif group in '4567':
-            qtile.cmd_to_screen(1)
-            qtile.groupMap[group].cmd_toscreen()
-        else:
-            qtile.cmd_to_screen(2)
-            qtile.groupMap[group].cmd_toscreen()   
 
-    return f
 
 groups = [Group(**param) for param in groups]
 
 for idx, group in enumerate(groups, start=1):
 
-    idxstr = str(idx)
+    idxstr = str(idx % 10)
     name = group.name
 
-    keys.append(Key([mod], idxstr, lazy.group[name].toscreen(), desc=f"Switch to group {name}"))
-    keys.append(Key([mod, "shift"], idxstr, lazy.window.togroup(name, switch_group=False), desc=f"Send windown to group {name}"))
+    # keys.append(Key([mod], idxstr, lazy.group[name].toscreen(), desc=f"Switch to group {name}"))
+    # keys.append(Key([mod, "shift"], idxstr, lazy.window.togroup(name, switch_group=False), desc=f"Send windown to group {name}"))
+
+    keys.append(Key([mod], idxstr, lazy.function(send_group_to_screen(name))))
+    keys.append(Key([mod, "shift"], idxstr, lazy.window.togroup(name, switch_group=False)))
 
 
 layouts = [
@@ -290,8 +307,6 @@ layouts = [
     # layout.VerticalTile(),
     # layout.Zoomy(),
 ]
-
-
 
 colors = [
     ["#282a36", "#282a36"], # panel background
@@ -321,7 +336,49 @@ groupbox = widget.GroupBox(
     **widget_defaults
 )
 
-groupbox = WidgetContainer(groupbox)
+groupbox1 = widget.GroupBox(
+    # fontsize=18,
+    borderwidth=0,
+    active='#F5F5F5',
+    inactive="727272",
+    highlight_method='text',
+    this_current_screen_border='#ffd47e',
+    # spacing=1,
+    urgent_alert_method='text',
+    visible_groups=['internet', 'git', 'camera'],
+    **colours['groupbox'],
+    **widget_defaults
+)
+
+groupbox0 = widget.GroupBox(
+    # fontsize=18,
+    borderwidth=0,
+    active='#F5F5F5',
+    inactive="727272",
+    highlight_method='text',
+    this_current_screen_border='#ffd47e',
+    # spacing=1,
+    urgent_alert_method='text',
+    visible_groups=['math', 'python', 'books', 'dotfiles'],
+    **colours['groupbox'],
+    **widget_defaults
+)
+
+groupbox2 = widget.GroupBox(
+    # fontsize=18,
+    borderwidth=0,
+    active='#F5F5F5',
+    inactive="727272",
+    highlight_method='text',
+    this_current_screen_border='#ffd47e',
+    # spacing=1,
+    urgent_alert_method='text',
+    visible_groups=['document', 'private', 'terminal'],
+    **colours['groupbox'],
+    **widget_defaults
+)
+
+
 
 screens = [
     Screen(
@@ -332,7 +389,7 @@ screens = [
                 *cpu, widget.Sep(linewidth=0, padding=6),
                 # *net, widget.Sep(linewidth=0, padding=6),
                 widget.Spacer(),
-                *groupbox,
+                *WidgetContainer(groupbox0),
                 widget.Spacer(),
                 # widget.PulseVolume(),
                 # widget.WindowName(), widget.Sep(linewidth=0, padding=6),
@@ -359,7 +416,7 @@ screens = [
                 *cpu, widget.Sep(linewidth=0, padding=6),
                 # *net, widget.Sep(linewidth=0, padding=6),
                 widget.Spacer(),
-                *groupbox,
+                *WidgetContainer(groupbox1),
                 widget.Spacer(),
                 # widget.PulseVolume(),
                 # widget.WindowName(), widget.Sep(linewidth=0, padding=6),
@@ -386,7 +443,7 @@ screens = [
                 *cpu, widget.Sep(linewidth=0, padding=6),
                 # *net, widget.Sep(linewidth=0, padding=6),
                 widget.Spacer(),
-                *groupbox,
+                *WidgetContainer(groupbox2),
                 widget.Spacer(),
                 # widget.PulseVolume(),
                 # widget.WindowName(), widget.Sep(linewidth=0, padding=6),
