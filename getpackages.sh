@@ -17,10 +17,13 @@ ARCH_PACKAGES=(
 	bluez                 # bluetooth protocol
 	bluez-utils           # provides bluetoothctl utility
 	xournalpp             # for using wacom one
+	xf86-input-wacom      # for helping map wacom one to a single monitor
 	neovim								# wowowow
 	noto-fonts            # a nice font
 	fuse2                 # it is required to tun AppImages
 	obs-studio            # cameras and recording
+	neofetch              # this is nice
+	htop									# process monitor
 	keepassxc             # I'm trying to deprecate this.. use pass instead
 	nano                  # I'm trying to deprecate this.. use neovim instead
 )

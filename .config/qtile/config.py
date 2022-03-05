@@ -8,6 +8,42 @@ from libqtile.utils import guess_terminal
 from libqtile.widget import TextBox, Memory, CPU, Clock, Backlight
 
 
+# from custom_configs import SagittariusConfig
+
+# from configuration.core import widget_defaults
+#
+# import socket
+#
+# from custom_configs import Sagittarius, Cygnus, Divenger, Taurus
+#
+# hostname = socket.gethostname()
+#
+# if hostname == 'sagittarius':
+#     config = Sagittarius()
+#
+# elif hostname == 'divenger':
+#     config = Divenger()
+#
+# elif hostname == 'cygnus':
+#     config = Cygnus()
+#
+# elif hostname == 'taurus':
+#     config = Taurus()
+#
+# else:
+#     raise ValueError()
+#
+#
+# # please note that this order matters
+# qtile_global_variable_names = [
+#     'widget_defaults',
+# ]
+#
+# for name in qtile_global_variable_names:
+#     globals()[name] = getattr(config, name)
+
+
+
 # ========== ========== ========== ========== ========== ========== Widgets
 class WidgetContainer(list):
 
@@ -202,7 +238,8 @@ groups = [
     {'name': 'terminal', 'label': '\ue795', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
     {'name': 'python', 'label': '\ue235', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
     {'name': 'math', 'label': '\ufc06', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
-    {'name': 'internet', 'label': '\ufbdf', 'layouts': [layout.MonadTall(ratio=0.75, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)], 'matches': [telegram, vivaldi]},
+    # {'name': 'internet', 'label': '\ufbdf', 'layouts': [layout.MonadTall(ratio=0.75, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)], 'matches': [telegram, vivaldi]},
+    {'name': 'internet', 'label': '\ufbdf', 'layouts': [layout.MonadTall(ratio=0.75, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
     {'name': 'private', 'label': '\ue780', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
     {'name': 'camera', 'label': '\uf5ff', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
     {'name': 'dotfiles', 'label': '\uf303', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},

@@ -1,9 +1,0 @@
-{
-    'widgets': {
-        'memory': {
-            'fg': 'FFD47E',
-            'bg': '181A29'
-        }
-    },
-    'layouts': {}
-}

@@ -2,8 +2,6 @@
 """
 
 Author: Rafael R. L. Benevides
-Date: 2/23/22
+Date: 3/5/22
 
 """
-
-from .widgets import IconWidget
