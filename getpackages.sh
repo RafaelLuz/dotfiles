@@ -41,6 +41,7 @@ AUR_PACKAGES=(
 	nerd-fonts-hack             # nice font
 	nerd-fonts-mononoki         # nice font
 	nerd-fonts-go-mono          # nice font
+	redshift-minimal            # colour temperature of screens
 	ncurses5-compat-libs        # required for pyenv as instructed in https://github.com/pyenv/pyenv/wiki/Common-build-problems
 )
 

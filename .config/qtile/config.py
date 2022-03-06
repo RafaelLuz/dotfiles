@@ -1,5 +1,9 @@
 # from typing import List  # noqa: F401
 
+import subprocess
+from datetime import datetime
+from pathlib import Path
+
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
@@ -199,6 +203,26 @@ def send_group_to_screen(group):
 
 
 
+def screenshot(save=True, copy=True, select=True):
+    def f(qtile):
+        name = str(datetime.now()).replace('-', '').replace(':', '').replace('.', '').replace(' ', '')
+        path = Path.home() / 'Workspace' / 'Pictures' / 'Screenshot'
+        path /= f'screenshot_{name}.png'
+
+        if select:
+            shot = subprocess.run(['maim', '-s'], stdout=subprocess.PIPE)
+        else:
+            shot = subprocess.run(['maim'], stdout=subprocess.PIPE)
+
+        if save:
+            with open(path, 'wb') as sc:
+                sc.write(shot.stdout)
+
+        if copy:
+            subprocess.run(['xclip', '-selection', 'clipboard', '-t',
+                            'image/png'], input=shot.stdout)
+    return f
+
 
 # ========== ========== ========== ========== ========== ==========
 mod = "mod4"
@@ -247,6 +271,12 @@ keys = [
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     # Key([mod], "w", lazy.function(send_group_to_screen('internet')))), desc="switch to internet group"),
     Key([mod], "Return", lazy.spawn("rofi -show drun -show-icons"), desc="Spawn a command using a prompt widget"),
+    
+    Key([mod], "Print", lazy.function(screenshot(select=False))),
+    Key([mod, 'shift'], "Print", lazy.function(screenshot())),
+
+    Key([mod], "c", lazy.spawn("atom -n /home/rafael/dotfiles --in-process-gpu")),
+    Key([mod], "d", lazy.spawn("atom -n /home/rafael/Workspace/Development/Projects/MSc/RafaelBenevides-MScProject/dissertation --in-process-gpu")),
 ]
 
 
@@ -256,19 +286,19 @@ vivaldi = Match(wm_class="vivaldi-stable")
 
 groups = [
     {'name': 'internet', 'label': '\ufbdf', 'layouts': [layout.MonadTall(ratio=0.75, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
-    {'name': 'git', 'label': '\ue725', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
-    {'name': 'camera', 'label': '\uf5ff', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
+    {'name': 'git', 'label': '\ue725', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left)]},
+    {'name': 'camera', 'label': '\uf5ff', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left)]},
 
-    {'name': 'math', 'label': '\ufc06', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
-    {'name': 'python', 'label': '\ue235', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
-    {'name': 'books', 'label': '\ue28a', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
-    {'name': 'dotfiles', 'label': '\uf303', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
+    {'name': 'math', 'label': '\ufc06', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left)]},
+    {'name': 'python', 'label': '\ue235', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left)]},
+    {'name': 'books', 'label': '\ue28a', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left)]},
+    {'name': 'dotfiles', 'label': '\uf303', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left)]},
 
     # {'name': 'internet', 'label': '\ufbdf', 'layouts': [layout.MonadTall(ratio=0.75, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)], 'matches': [telegram, vivaldi]},
 
-    {'name': 'document', 'label': '\uf725', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
-    {'name': 'private', 'label': '\ue780', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
-    {'name': 'terminal', 'label': '\ue795', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
+    {'name': 'document', 'label': '\uf725', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left)]},
+    {'name': 'private', 'label': '\ue780', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left)]},
+    {'name': 'terminal', 'label': '\ue795', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left)]},
 ]
 
 

@@ -44,7 +44,6 @@
     ]
     locales: [
       "en-GB"
-      "pt-BR"
     ]
     useSystem: false
   "title-bar-replacer":
