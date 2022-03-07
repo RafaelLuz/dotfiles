@@ -188,11 +188,11 @@ def send_group_to_screen(group):
 
     def arrange_groups(qtile):
         if group in ['internet', 'git', 'camera']:
-            qtile.cmd_to_screen(1)
+            qtile.cmd_to_screen(0)
             qtile.groups_map[group].cmd_toscreen()
 
         elif group in ['math', 'python', 'books', 'dotfiles']:
-            qtile.cmd_to_screen(0)
+            qtile.cmd_to_screen(1)
             qtile.groups_map[group].cmd_toscreen()
 
         else:
@@ -367,7 +367,7 @@ groupbox = widget.GroupBox(
     **widget_defaults
 )
 
-groupbox1 = widget.GroupBox(
+groupbox0 = widget.GroupBox(
     # fontsize=18,
     borderwidth=0,
     active='#F5F5F5',
@@ -381,7 +381,7 @@ groupbox1 = widget.GroupBox(
     **widget_defaults
 )
 
-groupbox0 = widget.GroupBox(
+groupbox1 = widget.GroupBox(
     # fontsize=18,
     borderwidth=0,
     active='#F5F5F5',
@@ -415,9 +415,9 @@ screens = [
     Screen(
         top=bar.Bar(
             widgets=[
-                # widget.Sep(linewidth=0, padding=2),
-                # *ram, widget.Sep(linewidth=0, padding=6),
-                # *cpu, widget.Sep(linewidth=0, padding=6),
+                widget.Sep(linewidth=0, padding=2),
+                *ram, widget.Sep(linewidth=0, padding=6),
+                *cpu, widget.Sep(linewidth=0, padding=6),
                 # *net, widget.Sep(linewidth=0, padding=6),
                 widget.Spacer(),
                 *WidgetContainer(groupbox0),
@@ -443,8 +443,8 @@ screens = [
         top=bar.Bar(
             widgets=[
                 widget.Sep(linewidth=0, padding=2),
-                *ram, widget.Sep(linewidth=0, padding=6),
-                *cpu, widget.Sep(linewidth=0, padding=6),
+                # *ram, widget.Sep(linewidth=0, padding=6),
+                # *cpu, widget.Sep(linewidth=0, padding=6),
                 # *net, widget.Sep(linewidth=0, padding=6),
                 widget.Spacer(),
                 *WidgetContainer(groupbox1),

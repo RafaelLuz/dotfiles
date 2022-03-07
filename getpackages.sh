@@ -30,9 +30,12 @@ ARCH_PACKAGES=(
 	zathura-djvu          # djvu support
 	ranger                # terminal based file manager
 	maim                  # for taking screenshots
+	xclip                 # handle clipboard
 	vlc                   # videos
 	unzip                 # dtrx needs it
+	socat                 # to configure ssh over proxy
 	lsof                  # list process open in process
+	slock                 # lock screen
  	keepassxc             # I'm trying to deprecate this.. use pass instead
 	nano                  # I'm trying to deprecate this.. use neovim instead
 	cowsay                # unnecessary funny stuff
@@ -42,6 +45,7 @@ ARCH_PACKAGES=(
 AUR_PACKAGES=(
 	bashmount                   # handle external media ('Im not quite sure if I need it)
 	dtrx                        # extract compressed files
+	#vim-plug                    # plugins for nvim
 	nerd-fonts-source-code-pro  # nice font
 	nerd-fonts-ubuntu-mono      # nice font
 	nerd-fonts-hack             # nice font
