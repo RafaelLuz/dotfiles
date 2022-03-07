@@ -28,9 +28,14 @@ ARCH_PACKAGES=(
 	zathura								# document viewer
 	zathura-pdf-poppler   # pdf support
 	zathura-djvu          # djvu support
+	ranger                # terminal based file manager
 	maim                  # for taking screenshots
+	vlc                   # videos
+	unzip                 # dtrx needs it
  	keepassxc             # I'm trying to deprecate this.. use pass instead
 	nano                  # I'm trying to deprecate this.. use neovim instead
+	cowsay                # unnecessary funny stuff
+	fortune-mod           # unnecessary funny stuff
 )
 
 AUR_PACKAGES=(
@@ -43,6 +48,7 @@ AUR_PACKAGES=(
 	nerd-fonts-go-mono          # nice font
 	redshift-minimal            # colour temperature of screens
 	ncurses5-compat-libs        # required for pyenv as instructed in https://github.com/pyenv/pyenv/wiki/Common-build-problems
+	hollywood                   # unnecessary funny stuff
 )
 
 ATOM_PACKAGES=(

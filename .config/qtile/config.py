@@ -271,7 +271,7 @@ keys = [
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     # Key([mod], "w", lazy.function(send_group_to_screen('internet')))), desc="switch to internet group"),
     Key([mod], "Return", lazy.spawn("rofi -show drun -show-icons"), desc="Spawn a command using a prompt widget"),
-    
+
     Key([mod], "Print", lazy.function(screenshot(select=False))),
     Key([mod, 'shift'], "Print", lazy.function(screenshot())),
 
@@ -282,23 +282,24 @@ keys = [
 
 telegram = Match(wm_class="telegram-desktop")
 vivaldi = Match(wm_class="vivaldi-stable")
+zathura = Match(wm_class='Zathua')
 
 
 groups = [
-    {'name': 'internet', 'label': '\ufbdf', 'layouts': [layout.MonadTall(ratio=0.75, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)]},
-    {'name': 'git', 'label': '\ue725', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left)]},
-    {'name': 'camera', 'label': '\uf5ff', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left)]},
+    {'name': 'internet', 'label': '\ufbdf', 'layouts': [layout.MonadTall(ratio=0.75, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right, border_width=2, single_border_width=2)]},
+    {'name': 'git', 'label': '\ue725', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
+    {'name': 'camera', 'label': '\uf5ff', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
 
-    {'name': 'math', 'label': '\ufc06', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left)]},
-    {'name': 'python', 'label': '\ue235', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left)]},
-    {'name': 'books', 'label': '\ue28a', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left)]},
-    {'name': 'dotfiles', 'label': '\uf303', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left)]},
+    {'name': 'math', 'label': '\ufc06', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
+    {'name': 'python', 'label': '\ue235', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
+    {'name': 'books', 'label': '\ue28a', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)], 'matches': [zathura]},
+    {'name': 'dotfiles', 'label': '\uf303', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
 
     # {'name': 'internet', 'label': '\ufbdf', 'layouts': [layout.MonadTall(ratio=0.75, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)], 'matches': [telegram, vivaldi]},
 
-    {'name': 'document', 'label': '\uf725', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left)]},
-    {'name': 'private', 'label': '\ue780', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left)]},
-    {'name': 'terminal', 'label': '\ue795', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left)]},
+    {'name': 'document', 'label': '\uf725', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
+    {'name': 'private', 'label': '\ue780', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
+    {'name': 'terminal', 'label': '\ue795', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
 ]
 
 
@@ -414,9 +415,9 @@ screens = [
     Screen(
         top=bar.Bar(
             widgets=[
-                widget.Sep(linewidth=0, padding=2),
-                *ram, widget.Sep(linewidth=0, padding=6),
-                *cpu, widget.Sep(linewidth=0, padding=6),
+                # widget.Sep(linewidth=0, padding=2),
+                # *ram, widget.Sep(linewidth=0, padding=6),
+                # *cpu, widget.Sep(linewidth=0, padding=6),
                 # *net, widget.Sep(linewidth=0, padding=6),
                 widget.Spacer(),
                 *WidgetContainer(groupbox0),
@@ -426,7 +427,7 @@ screens = [
                 # *backlight, widget.Sep(linewidth=0, padding=6),
                 # *battery, widget.Sep(linewidth=0, padding=6),
                 # widget.Net(interface='enp0s3'),
-                *clock, widget.Sep(linewidth=0, padding=2)
+                # *clock, widget.Sep(linewidth=0, padding=2)
             ],
             size=24,
             opacity=0.75,
@@ -453,7 +454,7 @@ screens = [
                 # *backlight, widget.Sep(linewidth=0, padding=6),
                 # *battery, widget.Sep(linewidth=0, padding=6),
                 # widget.Net(interface='enp0s3'),
-                *clock, widget.Sep(linewidth=0, padding=2)
+                # *clock, widget.Sep(linewidth=0, padding=2)
             ],
             size=24,
             opacity=0.75,
@@ -468,9 +469,9 @@ screens = [
     Screen(
         top=bar.Bar(
             widgets=[
-                widget.Sep(linewidth=0, padding=2),
-                *ram, widget.Sep(linewidth=0, padding=6),
-                *cpu, widget.Sep(linewidth=0, padding=6),
+                # widget.Sep(linewidth=0, padding=2),
+                # *ram, widget.Sep(linewidth=0, padding=6),
+                # *cpu, widget.Sep(linewidth=0, padding=6),
                 # *net, widget.Sep(linewidth=0, padding=6),
                 widget.Spacer(),
                 *WidgetContainer(groupbox2),
