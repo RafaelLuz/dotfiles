@@ -32,6 +32,7 @@ ARCH_PACKAGES=(
 	maim                  # for taking screenshots
 	vlc                   # videos
 	unzip                 # dtrx needs it
+	lsof                  # list process open in process
  	keepassxc             # I'm trying to deprecate this.. use pass instead
 	nano                  # I'm trying to deprecate this.. use neovim instead
 	cowsay                # unnecessary funny stuff
