@@ -1,6 +1,7 @@
 # --==[ Themes ]==--
 import:
-  - ~/.config/alacritty/themes/material_ocean.yaml
+  # - ~/.config/alacritty/themes/dracula.yml
+  - ~/.config/alacritty/themes/hyper.yaml
 
 # --==[ Fonts ]==--
 # UbuntuMono Nerd Font
