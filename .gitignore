@@ -9,6 +9,7 @@
 !.config/qtile/
 #!.config/nvim/
 !.config/zathura/
+!.config/ranger/
 
 # ============================================================== .atom related
 !.atom/
