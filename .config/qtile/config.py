@@ -277,29 +277,31 @@ keys = [
 
     Key([mod], "c", lazy.spawn("atom -n /home/rafael/dotfiles --in-process-gpu")),
     Key([mod], "d", lazy.spawn("atom -n /home/rafael/Workspace/Development/Projects/MSc/RafaelBenevides-MScProject/dissertation --in-process-gpu")),
+    Key([mod], "z", lazy.spawn("zathura /home/rafael/Workspace/Development/Projects/MSc/RafaelBenevides-MScProject/dissertation/main.pdf")),
 ]
 
 
 telegram = Match(wm_class="telegram-desktop")
 vivaldi = Match(wm_class="vivaldi-stable")
-zathura = Match(wm_class='Zathua')
+zathura = Match(wm_class='Zathura')
+matplotlib = Match(wm_class='matplotlib')
 
 
 groups = [
-    {'name': 'internet', 'label': '\ufbdf', 'layouts': [layout.MonadTall(ratio=0.75, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right, border_width=2, single_border_width=2)]},
-    {'name': 'git', 'label': '\ue725', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
-    {'name': 'camera', 'label': '\uf5ff', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
+    {'name': 'internet', 'label': '\ufbdf 1', 'layouts': [layout.MonadTall(ratio=0.75, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right, border_width=2, single_border_width=2)]},
+    {'name': 'git', 'label': '2 \ue725', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
+    {'name': 'camera', 'label': '3 \uf5ff', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
 
-    {'name': 'math', 'label': '\ufc06', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
-    {'name': 'python', 'label': '\ue235', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
-    {'name': 'books', 'label': '\ue28a', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)], 'matches': [zathura]},
-    {'name': 'dotfiles', 'label': '\uf303', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
+    {'name': 'math', 'label': '\ufc06 4', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
+    {'name': 'python', 'label': '5 \ue235', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
+    {'name': 'books', 'label': '6 \ue28a', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
+    {'name': 'dotfiles', 'label': '7 \uf303', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
 
     # {'name': 'internet', 'label': '\ufbdf', 'layouts': [layout.MonadTall(ratio=0.75, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)], 'matches': [telegram, vivaldi]},
 
-    {'name': 'document', 'label': '\uf725', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
-    {'name': 'private', 'label': '\ue780', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
-    {'name': 'terminal', 'label': '\ue795', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
+    {'name': 'document', 'label': '8 \uf725', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)], 'matches': [zathura]},
+    {'name': 'private', 'label': '9 \ue780', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)], 'matches': [matplotlib]},
+    {'name': 'terminal', 'label': '0 \ue795', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
 ]
 
 
@@ -374,7 +376,7 @@ groupbox0 = widget.GroupBox(
     inactive="727272",
     highlight_method='text',
     this_current_screen_border='#ffd47e',
-    # spacing=1,
+    spacing=20,
     urgent_alert_method='text',
     visible_groups=['internet', 'git', 'camera'],
     **colours['groupbox'],
@@ -388,7 +390,7 @@ groupbox1 = widget.GroupBox(
     inactive="727272",
     highlight_method='text',
     this_current_screen_border='#ffd47e',
-    # spacing=1,
+    spacing=20,
     urgent_alert_method='text',
     visible_groups=['math', 'python', 'books', 'dotfiles'],
     **colours['groupbox'],
@@ -402,7 +404,7 @@ groupbox2 = widget.GroupBox(
     inactive="727272",
     highlight_method='text',
     this_current_screen_border='#ffd47e',
-    # spacing=1,
+    spacing=20,
     urgent_alert_method='text',
     visible_groups=['document', 'private', 'terminal'],
     **colours['groupbox'],
@@ -518,6 +520,7 @@ floating_layout = layout.Floating(
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
         Match(title="jetbrains-toolbox"),  # GPG key password entry
+        matplotlib
     ]
 )
 auto_fullscreen = True
