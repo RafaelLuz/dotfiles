@@ -37,6 +37,7 @@ ARCH_PACKAGES=(
 	lsof                  # list process open in process
 	slock                 # lock screen
 	# virtualbox
+	kvantum-qt5
  	keepassxc             # I'm trying to deprecate this.. use pass instead
 	nano                  # I'm trying to deprecate this.. use neovim instead
 	cowsay                # unnecessary funny stuff
@@ -63,6 +64,7 @@ ATOM_PACKAGES=(
 	dracula-syntax              # theme of choice
 	dracula-ui                  # theme of choice
 	language-latex              # syntax highlight for latex
+	language-cython              
 	language-markdown           # syntax highlight for markdown
 	language-restructuredtext   # syntax highlight for sphynx
 	language-splunk-conf        # syntax highlight for .conf files
