@@ -116,6 +116,7 @@ widget_defaults = dict(
 
 extension_defaults = widget_defaults.copy()
 
+
 # ---------- ---------- ---------- ---------- ---------- ---------- memory
 ram_widget = Memory(
     format='{MemUsed:2.1f}{mm} / {MemTotal:.1f}{mm}',
@@ -123,7 +124,6 @@ ram_widget = Memory(
     **colours['memory'],
     **widget_defaults
 )
-
 ram = WidgetContainer(ram_widget, icon_char='\ufb19')
 
 # ---------- ---------- ---------- ---------- ---------- ---------- CPU
@@ -144,7 +144,6 @@ clock_widget = Clock(
 )
 clock = WidgetContainer(clock_widget, icon_char='\uf64f ')
 
-
 # ---------- ---------- ---------- ---------- ---------- ---------- backlight
 backlight_widget = Backlight(
     format='{percent:2.0%}',
@@ -156,7 +155,6 @@ backlight_widget = Backlight(
 )
 backlight = WidgetContainer(backlight_widget, icon_char='\uf5dc ')
 
-
 # ---------- ---------- ---------- ---------- ---------- ---------- battery
 battery = widget.Battery(
     charge_char='\uf583',
@@ -167,7 +165,6 @@ battery = widget.Battery(
     **colours['battery'],
     **widget_defaults
 )
-
 battery = WidgetContainer(battery)
 
 # ---------- ---------- ---------- ---------- ---------- ---------- Net
@@ -177,11 +174,7 @@ net = widget.Net(
     **colours['net'],
     **widget_defaults
 )
-
 net = WidgetContainer(net)
-
-
-
 
 
 def send_group_to_screen(group):
@@ -221,6 +214,14 @@ def screenshot(save=True, copy=True, select=True):
         if copy:
             subprocess.run(['xclip', '-selection', 'clipboard', '-t',
                             'image/png'], input=shot.stdout)
+    return f
+
+
+def launc_dissertation_pdf():
+    def f(qtile):
+        path = Path.home() / 'Workspace' / 'Development' / 'Projects' / 'MSc' / 'RafaelBenevides-MScProject' / 'main.pdf'
+        subprocess.run(['zathura', f'{path}'], stdout=subprocess.PIPE)
+
     return f
 
 
@@ -274,6 +275,7 @@ keys = [
 
     Key([mod], "Print", lazy.function(screenshot(select=False))),
     Key([mod, 'shift'], "Print", lazy.function(screenshot())),
+    # Key([mod], "z", lazy.function(launc_dissertation_pdf())),
 
     Key([mod], "c", lazy.spawn("atom -n /home/rafael/dotfiles --in-process-gpu")),
     Key([mod], "d", lazy.spawn("atom -n /home/rafael/Workspace/Development/Projects/MSc/RafaelBenevides-MScProject/dissertation --in-process-gpu")),

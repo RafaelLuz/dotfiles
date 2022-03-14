@@ -1,4 +1,14 @@
 setxkbmap br &
+numlockx &
 #nitrogen --restore &
 picom --experimental-backends --backend glx &
-xsetwacom set 9 MapToOutput 1920x1080+1920+0 &
+# xsetwacom set 9 MapToOutput 1920x1080+1920+0 &
+
+#if [ "$HOSTNAME" = "sagittarius"  ]; then
+#  xsetwacom set 9 MapToOutput 1920x1080+1920+0 &
+#
+#elif [ "$HOSTNAME" = "divenger"  ]; then
+#  xsetwacom set 13 MapToOutput 1920x1080+1920+0 &
+#  xsetwacom set 13 Rotate half &
+#
+#fi

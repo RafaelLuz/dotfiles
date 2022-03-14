@@ -16,3 +16,4 @@ if [ -d "$HOME/.pyenv" ]; then
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
 fi
+export PATH="$HOME/texmf/tex/latex/sparta:$PATH"
