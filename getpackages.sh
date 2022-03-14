@@ -36,6 +36,7 @@ ARCH_PACKAGES=(
 	socat                 # to configure ssh over proxy
 	lsof                  # list process open in process
 	slock                 # lock screen
+	# virtualbox
  	keepassxc             # I'm trying to deprecate this.. use pass instead
 	nano                  # I'm trying to deprecate this.. use neovim instead
 	cowsay                # unnecessary funny stuff
@@ -52,6 +53,7 @@ AUR_PACKAGES=(
 	nerd-fonts-mononoki         # nice font
 	nerd-fonts-go-mono          # nice font
 	redshift-minimal            # colour temperature of screens
+	onlyoffice-bin
 	ncurses5-compat-libs        # required for pyenv as instructed in https://github.com/pyenv/pyenv/wiki/Common-build-problems
 	hollywood                   # unnecessary funny stuff
 )
