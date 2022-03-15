@@ -29,6 +29,7 @@ ARCH_PACKAGES=(
 	zathura-pdf-poppler   # pdf support
 	zathura-djvu          # djvu support
 	ranger                # terminal based file manager
+	ueberzug              # image preview in ranger
 	maim                  # for taking screenshots
 	xclip                 # handle clipboard
 	vlc                   # videos
@@ -64,7 +65,7 @@ ATOM_PACKAGES=(
 	dracula-syntax              # theme of choice
 	dracula-ui                  # theme of choice
 	language-latex              # syntax highlight for latex
-	language-cython              
+	language-cython
 	language-markdown           # syntax highlight for markdown
 	language-restructuredtext   # syntax highlight for sphynx
 	language-splunk-conf        # syntax highlight for .conf files

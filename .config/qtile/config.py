@@ -16,11 +16,11 @@ from libqtile.widget import TextBox, Memory, CPU, Clock, Backlight
 
 # from configuration.core import widget_defaults
 #
-# import socket
+import socket
 #
 # from custom_configs import Sagittarius, Cygnus, Divenger, Taurus
 #
-# hostname = socket.gethostname()
+hostname = socket.gethostname()
 #
 # if hostname == 'sagittarius':
 #     config = Sagittarius()
@@ -413,91 +413,121 @@ groupbox2 = widget.GroupBox(
     **widget_defaults
 )
 
+if hostname in ['sagittarius', 'divenger']:
+    screens = [
+        Screen(
+            top=bar.Bar(
+                widgets=[
+                    widget.Sep(linewidth=0, padding=2),
+                    *ram, widget.Sep(linewidth=0, padding=6),
+                    *cpu, widget.Sep(linewidth=0, padding=6),
+                    # *net, widget.Sep(linewidth=0, padding=6),
+                    widget.Spacer(),
+                    *WidgetContainer(groupbox0),
+                    widget.Spacer(),
+                    # widget.PulseVolume(),
+                    # widget.WindowName(), widget.Sep(linewidth=0, padding=6),
+                    # *backlight, widget.Sep(linewidth=0, padding=6),
+                    # *battery, widget.Sep(linewidth=0, padding=6),
+                    # widget.Net(interface='enp0s3'),
+                    # *clock, widget.Sep(linewidth=0, padding=2)
+                ],
+                size=24,
+                opacity=0.75,
+                background='#00000000',
+                margin=[9, 9, 0, 9],  # N E S W
+                # border_width=[0, 0, 0, 0],  # Draw top and bottom borders
+                border_color='#000000',
+                border_width=0
+            ),
+            wallpaper='/home/rafael/Workspace/Pictures/Wallpaper/single/9khyjmypmg471.jpg'
+        ),
+        Screen(
+            top=bar.Bar(
+                widgets=[
+                    widget.Sep(linewidth=0, padding=2),
+                    # *ram, widget.Sep(linewidth=0, padding=6),
+                    # *cpu, widget.Sep(linewidth=0, padding=6),
+                    # *net, widget.Sep(linewidth=0, padding=6),
+                    widget.Spacer(),
+                    *WidgetContainer(groupbox1),
+                    widget.Spacer(),
+                    # widget.PulseVolume(),
+                    # widget.WindowName(), widget.Sep(linewidth=0, padding=6),
+                    # *backlight, widget.Sep(linewidth=0, padding=6),
+                    # *battery, widget.Sep(linewidth=0, padding=6),
+                    # widget.Net(interface='enp0s3'),
+                    # *clock, widget.Sep(linewidth=0, padding=2)
+                ],
+                size=24,
+                opacity=0.75,
+                background='#00000000',
+                margin=[9, 9, 0, 9],  # N E S W
+                # border_width=[0, 0, 0, 0],  # Draw top and bottom borders
+                border_color='#000000',
+                border_width=0
+            ),
+            wallpaper='/home/rafael/Workspace/Pictures/Wallpaper/single/9khyjmypmg471.jpg'
+        ),
+        Screen(
+            top=bar.Bar(
+                widgets=[
+                    # widget.Sep(linewidth=0, padding=2),
+                    # *ram, widget.Sep(linewidth=0, padding=6),
+                    # *cpu, widget.Sep(linewidth=0, padding=6),
+                    # *net, widget.Sep(linewidth=0, padding=6),
+                    widget.Spacer(),
+                    *WidgetContainer(groupbox2),
+                    widget.Spacer(),
+                    # widget.PulseVolume(),
+                    # widget.WindowName(), widget.Sep(linewidth=0, padding=6),
+                    # *backlight, widget.Sep(linewidth=0, padding=6),
+                    # *battery, widget.Sep(linewidth=0, padding=6),
+                    # widget.Net(interface='enp0s3'),
+                    *clock, widget.Sep(linewidth=0, padding=2)
+                ],
+                size=24,
+                opacity=0.75,
+                background='#00000000',
+                margin=[9, 9, 0, 9],  # N E S W
+                # border_width=[0, 0, 0, 0],  # Draw top and bottom borders
+                border_color='#000000',
+                border_width=0
+            ),
+            wallpaper='/home/rafael/Workspace/Pictures/Wallpaper/single/9khyjmypmg471.jpg'
+        )
+    ]
 
+else:
+    screens = [
+        Screen(
+            top=bar.Bar(
+                widgets=[
+                    widget.Sep(linewidth=0, padding=2),
+                    *ram, widget.Sep(linewidth=0, padding=6),
+                    *cpu, widget.Sep(linewidth=0, padding=6),
+                    *net, widget.Sep(linewidth=0, padding=6),
+                    widget.Spacer(),
+                    *WidgetContainer(groupbox),
+                    widget.Spacer(),
+                    # widget.PulseVolume(),
+                    # widget.WindowName(), widget.Sep(linewidth=0, padding=6),
+                    # *backlight, widget.Sep(linewidth=0, padding=6),
+                    *battery, widget.Sep(linewidth=0, padding=6),
+                    *clock, widget.Sep(linewidth=0, padding=2)
+                ],
+                size=24,
+                opacity=0.75,
+                background='#00000000',
+                margin=[9, 9, 0, 9],  # N E S W
+                # border_width=[0, 0, 0, 0],  # Draw top and bottom borders
+                border_color='#000000',
+                border_width=0
+            ),
+            wallpaper='/home/rafael/Workspace/Pictures/Wallpaper/single/9khyjmypmg471.jpg'
+        )
+    ]
 
-screens = [
-    Screen(
-        top=bar.Bar(
-            widgets=[
-                widget.Sep(linewidth=0, padding=2),
-                *ram, widget.Sep(linewidth=0, padding=6),
-                *cpu, widget.Sep(linewidth=0, padding=6),
-                # *net, widget.Sep(linewidth=0, padding=6),
-                widget.Spacer(),
-                *WidgetContainer(groupbox0),
-                widget.Spacer(),
-                # widget.PulseVolume(),
-                # widget.WindowName(), widget.Sep(linewidth=0, padding=6),
-                # *backlight, widget.Sep(linewidth=0, padding=6),
-                # *battery, widget.Sep(linewidth=0, padding=6),
-                # widget.Net(interface='enp0s3'),
-                # *clock, widget.Sep(linewidth=0, padding=2)
-            ],
-            size=24,
-            opacity=0.75,
-            background='#00000000',
-            margin=[9, 9, 0, 9],  # N E S W
-            # border_width=[0, 0, 0, 0],  # Draw top and bottom borders
-            border_color='#000000',
-            border_width=0
-        ),
-        wallpaper='/home/rafael/Workspace/Pictures/Wallpaper/single/9khyjmypmg471.jpg'
-    ),
-    Screen(
-        top=bar.Bar(
-            widgets=[
-                widget.Sep(linewidth=0, padding=2),
-                # *ram, widget.Sep(linewidth=0, padding=6),
-                # *cpu, widget.Sep(linewidth=0, padding=6),
-                # *net, widget.Sep(linewidth=0, padding=6),
-                widget.Spacer(),
-                *WidgetContainer(groupbox1),
-                widget.Spacer(),
-                # widget.PulseVolume(),
-                # widget.WindowName(), widget.Sep(linewidth=0, padding=6),
-                # *backlight, widget.Sep(linewidth=0, padding=6),
-                # *battery, widget.Sep(linewidth=0, padding=6),
-                # widget.Net(interface='enp0s3'),
-                # *clock, widget.Sep(linewidth=0, padding=2)
-            ],
-            size=24,
-            opacity=0.75,
-            background='#00000000',
-            margin=[9, 9, 0, 9],  # N E S W
-            # border_width=[0, 0, 0, 0],  # Draw top and bottom borders
-            border_color='#000000',
-            border_width=0
-        ),
-        wallpaper='/home/rafael/Workspace/Pictures/Wallpaper/single/9khyjmypmg471.jpg'
-    ),
-    Screen(
-        top=bar.Bar(
-            widgets=[
-                # widget.Sep(linewidth=0, padding=2),
-                # *ram, widget.Sep(linewidth=0, padding=6),
-                # *cpu, widget.Sep(linewidth=0, padding=6),
-                # *net, widget.Sep(linewidth=0, padding=6),
-                widget.Spacer(),
-                *WidgetContainer(groupbox2),
-                widget.Spacer(),
-                # widget.PulseVolume(),
-                # widget.WindowName(), widget.Sep(linewidth=0, padding=6),
-                # *backlight, widget.Sep(linewidth=0, padding=6),
-                # *battery, widget.Sep(linewidth=0, padding=6),
-                # widget.Net(interface='enp0s3'),
-                *clock, widget.Sep(linewidth=0, padding=2)
-            ],
-            size=24,
-            opacity=0.75,
-            background='#00000000',
-            margin=[9, 9, 0, 9],  # N E S W
-            # border_width=[0, 0, 0, 0],  # Draw top and bottom borders
-            border_color='#000000',
-            border_width=0
-        ),
-        wallpaper='/home/rafael/Workspace/Pictures/Wallpaper/single/9khyjmypmg471.jpg'
-    )
-]
 
 # Drag floating layouts.
 mouse = [
