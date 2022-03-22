@@ -277,6 +277,8 @@ keys = [
     Key([mod, 'shift'], "Print", lazy.function(screenshot())),
     # Key([mod], "z", lazy.function(launc_dissertation_pdf())),
 
+    Key([mod], "m", lazy.spawn("slock")),
+
     Key([mod], "c", lazy.spawn("atom -n /home/rafael/dotfiles --in-process-gpu")),
     Key([mod], "d", lazy.spawn("atom -n /home/rafael/Workspace/Development/Projects/MSc/RafaelBenevides-MScProject/dissertation --in-process-gpu")),
     Key([mod], "z", lazy.spawn("zathura /home/rafael/Workspace/Development/Projects/MSc/RafaelBenevides-MScProject/dissertation/main.pdf")),
