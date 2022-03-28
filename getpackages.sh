@@ -16,6 +16,8 @@ ARCH_PACKAGES=(
 	atom                  # text editor of choice
 	bluez                 # bluetooth protocol
 	bluez-utils           # provides bluetoothctl utility
+	python-dbus-next      # required by qtile bluetooth widget
+	alsa-utils            # required volume widget
 	xournalpp             # for using wacom one
 	xf86-input-wacom      # for helping map wacom one to a single monitor
 	neovim								# wowowow

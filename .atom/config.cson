@@ -50,5 +50,7 @@
     colors:
       controlTheme: "Legacy"
     general: {}
+  "tree-view":
+    hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false

@@ -106,6 +106,7 @@ colours = {
     'battery': {'foreground': '#cdea9f', 'background': '181A29'},
     'net': {'foreground': '#98e4ff', 'background': '181A29'},
     'groupbox': {'background': '181A29'},
+    'systray': {'background': '181A29'},
 }
 
 widget_defaults = dict(
@@ -169,14 +170,19 @@ battery = WidgetContainer(battery)
 
 # ---------- ---------- ---------- ---------- ---------- ---------- Net
 net = widget.Net(
-    interface="wlan0",
+    interface="wlan0" if hostname=='cygnus' else 'enp5s0',
     format='{down}\uf175 {up}\uf176',
     **colours['net'],
     **widget_defaults
 )
 net = WidgetContainer(net)
 
+# ---------- ---------- ---------- ---------- ---------- ----------
+systray = widget.Systray()
 
+
+
+# ========== ========== ========== ========== ========== ==========
 def send_group_to_screen(group):
 
     def arrange_groups(qtile):
@@ -193,7 +199,6 @@ def send_group_to_screen(group):
             qtile.groups_map[group].cmd_toscreen()
 
     return arrange_groups
-
 
 
 def screenshot(save=True, copy=True, select=True):
@@ -214,14 +219,6 @@ def screenshot(save=True, copy=True, select=True):
         if copy:
             subprocess.run(['xclip', '-selection', 'clipboard', '-t',
                             'image/png'], input=shot.stdout)
-    return f
-
-
-def launc_dissertation_pdf():
-    def f(qtile):
-        path = Path.home() / 'Workspace' / 'Development' / 'Projects' / 'MSc' / 'RafaelBenevides-MScProject' / 'main.pdf'
-        subprocess.run(['zathura', f'{path}'], stdout=subprocess.PIPE)
-
     return f
 
 
@@ -307,8 +304,6 @@ groups = [
     {'name': 'private', 'label': '9 \ue780', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)], 'matches': [matplotlib]},
     {'name': 'terminal', 'label': '0 \ue795', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
 ]
-
-
 
 groups = [Group(**param) for param in groups]
 
@@ -423,11 +418,14 @@ if hostname in ['sagittarius', 'divenger']:
                     widget.Sep(linewidth=0, padding=2),
                     *ram, widget.Sep(linewidth=0, padding=6),
                     *cpu, widget.Sep(linewidth=0, padding=6),
-                    # *net, widget.Sep(linewidth=0, padding=6),
+                    *WidgetContainer(
+                        widget.Bluetooth(hci='/dev_F8_AB_E5_26_D7_5B', **colours['clock'], **widget_defaults),
+                        icon_char='\uf5ae'), widget.Sep(linewidth=0, padding=6),
+                    *WidgetContainer(widget.Volume(fmt=" {}", **widget_defaults, **colours['systray']), icon_char='\ufa7d'),
                     widget.Spacer(),
                     *WidgetContainer(groupbox0),
                     widget.Spacer(),
-                    # widget.PulseVolume(),
+                    systray,
                     # widget.WindowName(), widget.Sep(linewidth=0, padding=6),
                     # *backlight, widget.Sep(linewidth=0, padding=6),
                     # *battery, widget.Sep(linewidth=0, padding=6),
@@ -448,9 +446,7 @@ if hostname in ['sagittarius', 'divenger']:
             top=bar.Bar(
                 widgets=[
                     widget.Sep(linewidth=0, padding=2),
-                    # *ram, widget.Sep(linewidth=0, padding=6),
-                    # *cpu, widget.Sep(linewidth=0, padding=6),
-                    # *net, widget.Sep(linewidth=0, padding=6),
+
                     widget.Spacer(),
                     *WidgetContainer(groupbox1),
                     widget.Spacer(),
@@ -477,7 +473,7 @@ if hostname in ['sagittarius', 'divenger']:
                     # widget.Sep(linewidth=0, padding=2),
                     # *ram, widget.Sep(linewidth=0, padding=6),
                     # *cpu, widget.Sep(linewidth=0, padding=6),
-                    # *net, widget.Sep(linewidth=0, padding=6),
+                    *net, widget.Sep(linewidth=0, padding=6),
                     widget.Spacer(),
                     *WidgetContainer(groupbox2),
                     widget.Spacer(),
@@ -486,6 +482,7 @@ if hostname in ['sagittarius', 'divenger']:
                     # *backlight, widget.Sep(linewidth=0, padding=6),
                     # *battery, widget.Sep(linewidth=0, padding=6),
                     # widget.Net(interface='enp0s3'),
+                    *WidgetContainer(widget.OpenWeather(location='brasilia', format='{location_city}: {temp}\u00b0C, {humidity}%', **colours['CPU'], **widget_defaults)), widget.Sep(linewidth=0, padding=6),
                     *clock, widget.Sep(linewidth=0, padding=2)
                 ],
                 size=24,
