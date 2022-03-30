@@ -15,9 +15,11 @@
     enabled: true
   core:
     allowPendingPaneItems: false
+    audioBeep: false
     disabledPackages: [
       "language-gfm"
     ]
+    excludeVcsIgnoredPaths: false
     restorePreviousWindowsOnStart: "no"
     telemetryConsent: "limited"
     themes: [
@@ -51,6 +53,6 @@
       controlTheme: "Legacy"
     general: {}
   "tree-view":
-    hideVcsIgnoredFiles: true
+    hideVcsIgnoredFiles: false
   welcome:
     showOnStartup: false

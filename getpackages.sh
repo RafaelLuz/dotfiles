@@ -60,6 +60,7 @@ AUR_PACKAGES=(
 	onlyoffice-bin
 	ncurses5-compat-libs        # required for pyenv as instructed in https://github.com/pyenv/pyenv/wiki/Common-build-problems
 	hollywood                   # unnecessary funny stuff
+	nvim-packer-git             # plugin manager for nvim
 )
 
 ATOM_PACKAGES=(

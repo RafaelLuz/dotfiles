@@ -7,7 +7,7 @@
 !.config/alacritty/
 !.config/picom/
 !.config/qtile/
-#!.config/nvim/
+!.config/nvim/
 !.config/zathura/
 !.config/ranger/
 
