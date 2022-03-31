@@ -260,7 +260,7 @@ keys = [
     #     lazy.layout.toggle_split(),
     #     desc="Toggle between split and unsplit sides of stack",
     # ),
-    Key([mod, "control"], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
@@ -268,7 +268,7 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     # Key([mod], "w", lazy.function(send_group_to_screen('internet')))), desc="switch to internet group"),
-    Key([mod], "Return", lazy.spawn("rofi -show drun -show-icons"), desc="Spawn a command using a prompt widget"),
+    Key([mod, "control"], "Return", lazy.spawn("rofi -show drun -show-icons"), desc="Spawn a command using a prompt widget"),
 
     Key([mod], "Print", lazy.function(screenshot(select=False))),
     Key([mod, 'shift'], "Print", lazy.function(screenshot())),
