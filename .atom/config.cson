@@ -18,6 +18,7 @@
     audioBeep: false
     disabledPackages: [
       "language-gfm"
+      "terminus"
     ]
     excludeVcsIgnoredPaths: false
     restorePreviousWindowsOnStart: "no"
@@ -29,6 +30,7 @@
     titleBar: "hidden"
   editor:
     fontFamily: "Source Code Pro, Ubuntu Mono, Monospace"
+    fontSize: 15
     showIndentGuide: true
     softWrap: true
   "exception-reporting":

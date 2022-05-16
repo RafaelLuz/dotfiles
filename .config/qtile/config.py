@@ -300,7 +300,8 @@ groups = [
 
     # {'name': 'internet', 'label': '\ufbdf', 'layouts': [layout.MonadTall(ratio=0.75, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)], 'matches': [telegram, vivaldi]},
 
-    {'name': 'document', 'label': '8 \uf725', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)], 'matches': [zathura]},
+    # {'name': 'document', 'label': '8 \uf725', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)], 'matches': [zathura]},
+    {'name': 'document', 'label': '8 \uf725', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
     {'name': 'private', 'label': '9 \ue780', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)], 'matches': [matplotlib]},
     {'name': 'terminal', 'label': '0 \ue795', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
 ]

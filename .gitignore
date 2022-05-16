@@ -10,6 +10,7 @@
 !.config/nvim/
 !.config/zathura/
 !.config/ranger/
+!.config/rofi/
 
 # ============================================================== .atom related
 !.atom/
