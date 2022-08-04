@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 vim.opt_local.path:prepend(vim.fn.stdpath("config") .. "/lua")
 
 require("options")
@@ -16,3 +17,10 @@ require("colorscheme")
 -- require("vimwiki-setup")
 -- require("dap-setup")
 -- require("luasnip-setup")
+=======
+require("options")
+require("mappings")
+require("packer-config")
+require("nvim-tree-config")
+require("colourschemes")
+>>>>>>> 7457a201094317b9961b6daf0f8f9f9f40caa64f
