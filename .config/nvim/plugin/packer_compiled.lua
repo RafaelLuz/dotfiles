@@ -74,6 +74,11 @@ _G.packer_plugins = {
     path = "/home/rafael/.local/share/nvim/site/pack/packer/start/catppuccin",
     url = "https://github.com/catppuccin/nvim"
   },
+  ["nvim-lspconfig"] = {
+    loaded = true,
+    path = "/home/rafael/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    url = "https://github.com/neovim/nvim-lspconfig"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/home/rafael/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
