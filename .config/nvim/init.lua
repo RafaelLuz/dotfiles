@@ -1,9 +1,10 @@
 vim.opt_local.path:prepend(vim.fn.stdpath("config") .. "/lua")
 
-require("plugins")
 require("options")
-require("nvim-tree-setup")
-require("telescope-setup")
+
+require("packer-setup")
+-- require("nvim-tree-setup")
+-- require("telescope-setup")
 require("colorscheme")
 
 -- require("mappings")

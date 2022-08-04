@@ -186,11 +186,12 @@ systray = widget.Systray()
 def send_group_to_screen(group):
 
     def arrange_groups(qtile):
-        if group in ['internet', 'git', 'camera']:
+        if group in ['internet', 'git', 'camera', 'math']:
             qtile.cmd_to_screen(0)
             qtile.groups_map[group].cmd_toscreen()
 
-        elif group in ['math', 'python', 'books', 'dotfiles']:
+        # elif group in ['math', 'python', 'books', 'dotfiles']:
+        elif group in ['python', 'books']:
             qtile.cmd_to_screen(1)
             qtile.groups_map[group].cmd_toscreen()
 
@@ -199,6 +200,57 @@ def send_group_to_screen(group):
             qtile.groups_map[group].cmd_toscreen()
 
     return arrange_groups
+
+def up_group(group):
+
+    def arrange_groups(qtile):
+
+        qtile.cmd_to_screen(2)
+
+        if group == 'document':
+            qtile.groups_map['terminal'].cmd_toscreen()
+
+        elif group == 'private':
+            qtile.groups_map['document'].cmd_toscreen()
+
+        elif group == 'terminal':
+            qtile.groups_map['private'].cmd_toscreen()
+
+        else:
+            pass
+
+def down_group(group):
+
+    def arrange_groups(qtile):
+
+        qtile.cmd_to_screen(2)
+
+        if group == 'document':
+            qtile.groups_map['private'].cmd_toscreen()
+
+        elif group == 'private':
+            qtile.groups_map['terminal'].cmd_toscreen()
+
+        elif group == 'terminal':
+            qtile.groups_map['document'].cmd_toscreen()
+
+        else:
+            pass
+
+        # if group in ['internet', 'git', 'camera']:
+        #     qtile.cmd_to_screen(0)
+        #     qtile.groups_map[group].cmd_toscreen()
+        #
+        # elif group in ['math', 'python', 'books', 'dotfiles']:
+        #     qtile.cmd_to_screen(1)
+        #     qtile.groups_map[group].cmd_toscreen()
+        #
+        # else:
+        #     qtile.cmd_to_screen(2)
+        #     qtile.groups_map[group].cmd_toscreen()
+
+    return arrange_groups
+
 
 
 def screenshot(save=True, copy=True, select=True):
@@ -277,8 +329,12 @@ keys = [
     Key([mod], "m", lazy.spawn("slock")),
 
     Key([mod], "c", lazy.spawn("atom -n /home/rafael/dotfiles --in-process-gpu")),
+    # dissertation
     Key([mod], "d", lazy.spawn("atom -n /home/rafael/Workspace/Development/Projects/MSc/RafaelBenevides-MScProject/dissertation --in-process-gpu")),
     Key([mod], "z", lazy.spawn("zathura /home/rafael/Workspace/Development/Projects/MSc/RafaelBenevides-MScProject/dissertation/main.pdf")),
+    # presentation
+    Key([mod], "a", lazy.spawn("atom -n /home/rafael/Workspace/Development/Projects/MSc/RafaelBenevides-MScProject/presentation --in-process-gpu")),
+    Key([mod], "s", lazy.spawn("zathura /home/rafael/Workspace/Development/Projects/MSc/RafaelBenevides-MScProject/presentation/main.pdf")),
 ]
 
 
@@ -286,6 +342,7 @@ telegram = Match(wm_class="telegram-desktop")
 vivaldi = Match(wm_class="vivaldi-stable")
 zathura = Match(wm_class='Zathura')
 matplotlib = Match(wm_class='matplotlib')
+vtk = Match(wm_class='vtk')
 
 
 groups = [
@@ -296,13 +353,13 @@ groups = [
     {'name': 'math', 'label': '\ufc06 4', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
     {'name': 'python', 'label': '5 \ue235', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
     {'name': 'books', 'label': '6 \ue28a', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
-    {'name': 'dotfiles', 'label': '7 \uf303', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
+    {'name': 'dotfiles', 'label': '7 \uf303', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)], 'matches': [matplotlib, vtk]},
 
     # {'name': 'internet', 'label': '\ufbdf', 'layouts': [layout.MonadTall(ratio=0.75, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)], 'matches': [telegram, vivaldi]},
 
     # {'name': 'document', 'label': '8 \uf725', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)], 'matches': [zathura]},
-    {'name': 'document', 'label': '8 \uf725', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
-    {'name': 'private', 'label': '9 \ue780', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)], 'matches': [matplotlib]},
+    {'name': 'document', 'label': '8 \uf725', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)], 'matches': [matplotlib, vtk]},
+    {'name': 'private', 'label': '9 \ue780', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)], 'matches': [matplotlib, vtk]},
     {'name': 'terminal', 'label': '0 \ue795', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
 ]
 
@@ -315,6 +372,9 @@ for idx, group in enumerate(groups, start=1):
 
     # keys.append(Key([mod], idxstr, lazy.group[name].toscreen(), desc=f"Switch to group {name}"))
     # keys.append(Key([mod, "shift"], idxstr, lazy.window.togroup(name, switch_group=False), desc=f"Send windown to group {name}"))
+
+    keys.append(Key([mod], "Up", lazy.function(up_group(name))))
+    keys.append(Key([mod], "Down", lazy.function(down_group(name))))
 
     keys.append(Key([mod], idxstr, lazy.function(send_group_to_screen(name))))
     keys.append(Key([mod, "shift"], idxstr, lazy.window.togroup(name, switch_group=False)))
@@ -378,7 +438,7 @@ groupbox0 = widget.GroupBox(
     this_current_screen_border='#ffd47e',
     spacing=20,
     urgent_alert_method='text',
-    visible_groups=['internet', 'git', 'camera'],
+    visible_groups=['internet', 'git', 'camera', 'math'],
     **colours['groupbox'],
     **widget_defaults
 )
@@ -392,7 +452,7 @@ groupbox1 = widget.GroupBox(
     this_current_screen_border='#ffd47e',
     spacing=20,
     urgent_alert_method='text',
-    visible_groups=['math', 'python', 'books', 'dotfiles'],
+    visible_groups=['python', 'books'],
     **colours['groupbox'],
     **widget_defaults
 )
@@ -406,7 +466,7 @@ groupbox2 = widget.GroupBox(
     this_current_screen_border='#ffd47e',
     spacing=20,
     urgent_alert_method='text',
-    visible_groups=['document', 'private', 'terminal'],
+    visible_groups=['dotfiles', 'document', 'private', 'terminal'],
     **colours['groupbox'],
     **widget_defaults
 )
@@ -422,7 +482,7 @@ if hostname in ['sagittarius', 'divenger']:
                     *WidgetContainer(
                         widget.Bluetooth(hci='/dev_F8_AB_E5_26_D7_5B', **colours['clock'], **widget_defaults),
                         icon_char='\uf5ae'), widget.Sep(linewidth=0, padding=6),
-                    *WidgetContainer(widget.Volume(fmt=" {}", **widget_defaults, **colours['systray']), icon_char='\ufa7d'),
+                    # *WidgetContainer(widget.Volume(fmt=" {}", **widget_defaults, **colours['systray']), icon_char='\ufa7d'),
                     widget.Spacer(),
                     *WidgetContainer(groupbox0),
                     widget.Spacer(),
@@ -552,7 +612,7 @@ floating_layout = layout.Floating(
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
         Match(title="jetbrains-toolbox"),  # GPG key password entry
-        matplotlib
+        matplotlib, vtk
     ]
 )
 auto_fullscreen = True

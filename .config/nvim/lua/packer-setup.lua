@@ -41,10 +41,10 @@ return require("packer").startup(function()
 	-- use("andrewradev/splitjoin.vim") -- gS (not working) and gJ commands
 
 	-- Colorschemes
-    use("lunarvim/colorschemes")
-    use("dracula/vim")
-    use("folke/tokyonight.nvim")
-    use("gruvbox-community/gruvbox")
+  use("lunarvim/colorschemes")
+  use("dracula/vim")
+  use("folke/tokyonight.nvim")
+  use("gruvbox-community/gruvbox")
 	use("lunarvim/darkplus.nvim")
   -- use("tribela/vim-transparent")
 	-- use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -65,8 +65,8 @@ return require("packer").startup(function()
 	-- use("rafamadriz/friendly-snippets")
 
 	-- LSP
-	-- use("neovim/nvim-lspconfig")
-	-- use("williamboman/nvim-lsp-installer")
+	use("neovim/nvim-lspconfig")
+	use("williamboman/nvim-lsp-installer")
 	-- use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 
 	-- Telescope
