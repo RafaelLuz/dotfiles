@@ -19,6 +19,7 @@
     disabledPackages: [
       "language-gfm"
       "terminus"
+      "atom-terminus"
     ]
     excludeVcsIgnoredPaths: false
     restorePreviousWindowsOnStart: "no"

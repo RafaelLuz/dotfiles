@@ -46,8 +46,6 @@ hostname = socket.gethostname()
 # for name in qtile_global_variable_names:
 #     globals()[name] = getattr(config, name)
 
-
-
 # ========== ========== ========== ========== ========== ========== Widgets
 class WidgetContainer(list):
 
@@ -186,11 +184,11 @@ systray = widget.Systray()
 def send_group_to_screen(group):
 
     def arrange_groups(qtile):
-        if group in ['internet', 'git', 'camera']:
+        if group in ['internet', 'git', 'camera', 'math']:
             qtile.cmd_to_screen(0)
             qtile.groups_map[group].cmd_toscreen()
 
-        elif group in ['math', 'python', 'books', 'dotfiles']:
+        elif group in ['python', 'books']:
             qtile.cmd_to_screen(1)
             qtile.groups_map[group].cmd_toscreen()
 
@@ -279,6 +277,8 @@ keys = [
     Key([mod], "c", lazy.spawn("atom -n /home/rafael/dotfiles --in-process-gpu")),
     Key([mod], "d", lazy.spawn("atom -n /home/rafael/Workspace/Development/Projects/MSc/RafaelBenevides-MScProject/dissertation --in-process-gpu")),
     Key([mod], "z", lazy.spawn("zathura /home/rafael/Workspace/Development/Projects/MSc/RafaelBenevides-MScProject/dissertation/main.pdf")),
+    Key([mod], "a", lazy.spawn("atom -n /home/rafael/Workspace/Development/Projects/MSc/RafaelBenevides-MScProject/presentation --in-process-gpu")),
+    Key([mod], "s", lazy.spawn("zathura /home/rafael/Workspace/Development/Projects/MSc/RafaelBenevides-MScProject/presentation/main.pdf")),
 ]
 
 
@@ -286,24 +286,238 @@ telegram = Match(wm_class="telegram-desktop")
 vivaldi = Match(wm_class="vivaldi-stable")
 zathura = Match(wm_class='Zathura')
 matplotlib = Match(wm_class='matplotlib')
+vtk = Match(wm_class='vtk')
+pycharm_exit_dialog = Match(wm_class='jetbrains-pycharm', title='Confirm Exit')
 
 
 groups = [
-    {'name': 'internet', 'label': '\ufbdf 1', 'layouts': [layout.MonadTall(ratio=0.75, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right, border_width=2, single_border_width=2)]},
-    {'name': 'git', 'label': '2 \ue725', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
-    {'name': 'camera', 'label': '3 \uf5ff', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
-
-    {'name': 'math', 'label': '\ufc06 4', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
-    {'name': 'python', 'label': '5 \ue235', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
-    {'name': 'books', 'label': '6 \ue28a', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
-    {'name': 'dotfiles', 'label': '7 \uf303', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
-
-    # {'name': 'internet', 'label': '\ufbdf', 'layouts': [layout.MonadTall(ratio=0.75, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._right)], 'matches': [telegram, vivaldi]},
-
-    # {'name': 'document', 'label': '8 \uf725', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)], 'matches': [zathura]},
-    {'name': 'document', 'label': '8 \uf725', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
-    {'name': 'private', 'label': '9 \ue780', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)], 'matches': [matplotlib]},
-    {'name': 'terminal', 'label': '0 \ue795', 'layouts': [layout.MonadTall(ratio=0.50, margin=9, border_focus="93bbff", border_normal="1D2330", align=layout.MonadTall._left, border_width=2, single_border_width=2)]},
+    # ===================================================================== Left
+    {
+        'name': 'internet',
+        'label': '\ufbdf 1',
+        'layouts': [
+            layout.MonadTall(
+                ratio=0.75,
+                margin=9,
+                border_focus="93bbff",
+                border_normal="1D2330",
+                align=layout.MonadTall._right,
+                border_width=2,
+                single_border_width=2
+            ),
+            layout.Stack(
+                num_stacks=1,
+                margin=9,
+                border_focus="93bbff",
+                border_normal="1D2330",
+                border_width=2,
+            )
+        ]
+    },
+    {
+        'name': 'git',
+        'label': '2 \ue725',
+        'layouts': [
+            layout.MonadTall(
+                ratio=0.50,
+                margin=9,
+                border_focus="93bbff",
+                border_normal="1D2330",
+                align=layout.MonadTall._right,
+                border_width=2,
+                single_border_width=2
+            ),
+            layout.Stack(
+                num_stacks=1,
+                margin=9,
+                border_focus="93bbff",
+                border_normal="1D2330",
+                border_width=2,
+            )
+        ]
+    },
+    {
+        'name': 'camera',
+        'label': '3 \uf5ff',
+        'layouts': [
+            layout.MonadTall(
+                ratio=0.50,
+                margin=9,
+                border_focus="93bbff",
+                border_normal="1D2330",
+                align=layout.MonadTall._right,
+                border_width=2,
+                single_border_width=2
+            ),
+            layout.Stack(
+                num_stacks=1,
+                margin=9,
+                border_focus="93bbff",
+                border_normal="1D2330",
+                border_width=2,
+            )
+        ]
+    },
+    {
+        'name': 'math',
+        'label': '\ufc06 4',
+        'layouts': [
+            layout.MonadTall(
+                ratio=0.50,
+                margin=9,
+                border_focus="93bbff",
+                border_normal="1D2330",
+                align=layout.MonadTall._right,
+                border_width=2,
+                single_border_width=2
+            ),
+            layout.Stack(
+                num_stacks=1,
+                margin=9,
+                border_focus="93bbff",
+                border_normal="1D2330",
+                border_width=2,
+            )
+        ]
+    },
+    # =================================================================== Centre
+    {
+        'name': 'python',
+        'label': '5 \ue235',
+        'layouts': [
+            layout.MonadTall(
+                ratio=0.50,
+                margin=9,
+                border_focus="93bbff",
+                border_normal="1D2330",
+                align=layout.MonadTall._left,
+                border_width=2,
+                single_border_width=2
+            ),
+            layout.Stack(
+                num_stacks=1,
+                margin=9,
+                border_focus="93bbff",
+                border_normal="1D2330",
+                border_width=2,
+            )
+        ],
+        'matches': [pycharm_exit_dialog]
+    },
+    {
+        'name': 'books',
+        'label': '6 \ue28a',
+        'layouts': [
+            layout.MonadTall(
+                ratio=0.50,
+                margin=9,
+                border_focus="93bbff",
+                border_normal="1D2330",
+                align=layout.MonadTall._left,
+                border_width=2,
+                single_border_width=2
+            ),
+            layout.Stack(
+                num_stacks=1,
+                margin=9,
+                border_focus="93bbff",
+                border_normal="1D2330",
+                border_width=2,
+            )
+        ],
+        'matches': [pycharm_exit_dialog]
+    },
+    # ==================================================================== Right
+    {
+        'name': 'dotfiles',
+        'label': '7 \uf303',
+        'layouts': [
+            layout.MonadTall(
+                ratio=0.50,
+                margin=9,
+                border_focus="93bbff",
+                border_normal="1D2330",
+                align=layout.MonadTall._left,
+                border_width=2,
+                single_border_width=2
+            ),
+            layout.Stack(
+                num_stacks=1,
+                margin=9,
+                border_focus="93bbff",
+                border_normal="1D2330",
+                border_width=2,
+            )
+        ],
+        'matches': [matplotlib, vtk]
+    },
+    {
+        'name': 'document',
+        'label': '8 \uf725',
+        'layouts': [
+            layout.MonadTall(
+                ratio=0.50,
+                margin=9,
+                border_focus="93bbff",
+                border_normal="1D2330",
+                align=layout.MonadTall._left,
+                border_width=2,
+                single_border_width=2
+            ),
+            layout.Stack(
+                num_stacks=1,
+                margin=9,
+                border_focus="93bbff",
+                border_normal="1D2330",
+                border_width=2,
+            )
+        ],
+        'matches': [matplotlib, vtk]},
+    {
+        'name': 'private',
+        'label': '9 \ue780',
+        'layouts': [
+            layout.MonadTall(
+                ratio=0.50,
+                margin=9,
+                border_focus="93bbff",
+                border_normal="1D2330",
+                align=layout.MonadTall._left,
+                border_width=2,
+                single_border_width=2
+            ),
+            layout.Stack(
+                num_stacks=1,
+                margin=9,
+                border_focus="93bbff",
+                border_normal="1D2330",
+                border_width=2,
+            )
+        ],
+        'matches': [matplotlib, vtk]
+    },
+    {
+        'name': 'terminal',
+        'label': '0 \ue795',
+        'layouts': [
+            layout.MonadTall(
+                ratio=0.50,
+                margin=9,
+                border_focus="93bbff",
+                border_normal="1D2330",
+                align=layout.MonadTall._left,
+                border_width=2,
+                single_border_width=2
+            ),
+            layout.Stack(
+                num_stacks=1,
+                margin=9,
+                border_focus="93bbff",
+                border_normal="1D2330",
+                border_width=2,
+            )
+        ]
+    },
 ]
 
 groups = [Group(**param) for param in groups]
@@ -378,7 +592,7 @@ groupbox0 = widget.GroupBox(
     this_current_screen_border='#ffd47e',
     spacing=20,
     urgent_alert_method='text',
-    visible_groups=['internet', 'git', 'camera'],
+    visible_groups=['internet', 'git', 'camera', 'math'],
     **colours['groupbox'],
     **widget_defaults
 )
@@ -392,7 +606,7 @@ groupbox1 = widget.GroupBox(
     this_current_screen_border='#ffd47e',
     spacing=20,
     urgent_alert_method='text',
-    visible_groups=['math', 'python', 'books', 'dotfiles'],
+    visible_groups=['python', 'books'],
     **colours['groupbox'],
     **widget_defaults
 )
@@ -406,7 +620,7 @@ groupbox2 = widget.GroupBox(
     this_current_screen_border='#ffd47e',
     spacing=20,
     urgent_alert_method='text',
-    visible_groups=['document', 'private', 'terminal'],
+    visible_groups=[ 'dotfiles', 'document', 'private', 'terminal'],
     **colours['groupbox'],
     **widget_defaults
 )
@@ -552,7 +766,7 @@ floating_layout = layout.Floating(
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
         Match(title="jetbrains-toolbox"),  # GPG key password entry
-        matplotlib
+        matplotlib, vtk
     ]
 )
 auto_fullscreen = True

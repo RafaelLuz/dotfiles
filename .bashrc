@@ -22,3 +22,4 @@ fi
 
 export PATH="$HOME/texmf/tex/latex/sparta:$PATH"
 export QT_STYLE_OVERRIDE=kvantum
+export PATH="$HOME/texmf/tex/latex/equinox:$PATH"
