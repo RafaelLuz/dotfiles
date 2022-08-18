@@ -1,3 +1,5 @@
+vim.notify = require("notify")
+
 -- Numbering
 vim.opt.number = true                 -- print the line number in front of each line
 vim.opt.relativenumber = true         -- show relative line number in front of each line
@@ -20,7 +22,7 @@ vim.opt.scrolloff = 8                 -- minimum nr. of lines above and below cu
 
 -- miscellaneous
 vim.opt.clipboard = "unnamedplus"     -- use the clipboard as the unnamed register. Refer to https://neovim.io/doc/user/options.html#'clipboard'
-vim.opt.wrap = false                  -- long lines wrap and continue on the next line
+vim.opt.wrap = false                   -- long lines wrap and continue on the next line
 vim.opt.splitright = true             -- new window is put right of the current one
-
+vim.opt.spelllang = 'en_gb'
 vim.opt.hidden = true                 -- don't unload buffer when it is abandoned

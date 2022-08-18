@@ -20,6 +20,8 @@ import socket
 #
 # from custom_configs import Sagittarius, Cygnus, Divenger, Taurus
 #
+
+
 hostname = socket.gethostname()
 #
 # if hostname == 'sagittarius':
@@ -45,6 +47,7 @@ hostname = socket.gethostname()
 #
 # for name in qtile_global_variable_names:
 #     globals()[name] = getattr(config, name)
+
 
 # ========== ========== ========== ========== ========== ========== Widgets
 class WidgetContainer(list):
@@ -177,7 +180,6 @@ net = WidgetContainer(net)
 
 # ---------- ---------- ---------- ---------- ---------- ----------
 systray = widget.Systray()
-
 
 
 # ========== ========== ========== ========== ========== ==========
