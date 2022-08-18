@@ -1,2 +1,6 @@
-include catppuccin
+# include catppuccin
 # include dracula
+include catppuccin-mocha
+
+set default-bg "#000000"
+set recolor-keephue             true      # keep original color
