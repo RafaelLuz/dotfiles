@@ -7,8 +7,13 @@ require("catppuccin").setup({
             enabled = true,
             show_root = true,
             transparent_panel = true
-        }
+        },
+        barbar = true,
+        bufferline = true,
     }
 })
 
+
 vim.cmd [[colorscheme catppuccin]]
+vim.cmd [[hi NvimTreeWinSeparator guifg=#1e2030]]
+

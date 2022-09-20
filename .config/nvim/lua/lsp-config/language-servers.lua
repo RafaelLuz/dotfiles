@@ -13,7 +13,7 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  -- See `:help vim.lsp.*` for documentation on any of the below   
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
@@ -32,23 +32,58 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
 
+
+-- Add additional capabilities supported by nvim-cmp
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
+
 local lsp_flags = {
   -- This is the default in Nvim 0.7+
   debounce_text_changes = 150,
 }
+
+-------- mason
+require("mason").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = {'pyright', 'texlab'}
+})
+
+
+-------------- servers
 require('lspconfig')['pyright'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
+    capabilities = capabilities
 }
-require('lspconfig')['tsserver'].setup{
+
+require('lspconfig').texlab.setup{
     on_attach = on_attach,
     flags = lsp_flags,
-}
-require('lspconfig')['rust_analyzer'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-    -- Server-specific settings...
+    capabilities = capabilities,
     settings = {
-      ["rust-analyzer"] = {}
+        texlab = {
+            auxDirectory = ".",
+            bibtexFormatter = "texlab",
+            build = {
+                args = {'filename=main'},
+                executable = "make",
+                forwardSearchAfter = false,
+                onSave = false
+            },
+            chktex = {
+                onEdit = false,
+                onOpenAndSave = false
+            },
+            diagnosticsDelay = 300,
+            formatterLineLength = 80,
+            forwardSearch = {
+            args = {}
+            },
+            latexFormatter = "latexindent",
+            latexindent = {
+                modifyLineBreaks = true
+            }
+        }
     }
 }

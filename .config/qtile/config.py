@@ -20,6 +20,8 @@ import socket
 #
 # from custom_configs import Sagittarius, Cygnus, Divenger, Taurus
 #
+
+
 hostname = socket.gethostname()
 #
 # if hostname == 'sagittarius':
@@ -45,6 +47,7 @@ hostname = socket.gethostname()
 #
 # for name in qtile_global_variable_names:
 #     globals()[name] = getattr(config, name)
+
 
 # ========== ========== ========== ========== ========== ========== Widgets
 class WidgetContainer(list):
@@ -97,14 +100,36 @@ class WidgetContainer(list):
 
 # ---------- ---------- ---------- ---------- ---------- ---------- settings
 colours = {
-    'memory': {'foreground': '#FFD47E', 'background': '#181A29'},
-    'CPU': {'foreground': '#D3A7EE', 'background': '181A29'},
-    'clock': {'foreground': '#93bbff', 'background': '181A29'},
-    'backlight': {'foreground': '#f07178', 'background': '181A29'},
-    'battery': {'foreground': '#cdea9f', 'background': '181A29'},
-    'net': {'foreground': '#98e4ff', 'background': '181A29'},
-    'groupbox': {'background': '181A29'},
-    'systray': {'background': '181A29'},
+    'memory': {
+        'foreground': '#FFD47E',
+        'background': '#181A29'
+    },
+    'CPU': {
+        'foreground': '#D3A7EE',
+        'background': '181A29'
+    },
+    'clock': {
+        'foreground': '#93bbff',
+        'background': '181A29'
+    },
+    'backlight': {
+        'foreground': '#f07178',
+        'background': '181A29'
+    },
+    'battery': {
+        'foreground': '#cdea9f',
+        'background': '181A29'
+    },
+    'net': {
+        'foreground': '#98e4ff',
+        'background': '181A29'
+    },
+    'groupbox': {
+        'background': '181A29'
+    },
+    'systray': {
+        'background': '181A29'
+    },
 }
 
 widget_defaults = dict(
@@ -168,7 +193,7 @@ battery = WidgetContainer(battery)
 
 # ---------- ---------- ---------- ---------- ---------- ---------- Net
 net = widget.Net(
-    interface="wlan0" if hostname=='cygnus' else 'enp5s0',
+    interface="wlan0" if hostname == 'cygnus' else 'enp5s0',
     format='{down}\uf175 {up}\uf176',
     **colours['net'],
     **widget_defaults
@@ -177,7 +202,6 @@ net = WidgetContainer(net)
 
 # ---------- ---------- ---------- ---------- ---------- ----------
 systray = widget.Systray()
-
 
 
 # ========== ========== ========== ========== ========== ==========
@@ -324,9 +348,8 @@ keys = [
     # Key([mod], "z", lazy.function(launc_dissertation_pdf())),
 
     Key([mod], "m", lazy.spawn("slock")),
-
-    Key([mod], "c", lazy.spawn("atom -n /home/rafael/dotfiles --in-process-gpu")),
-    # dissertation
+    Key([mod], "c", lazy.spawn("alacritty -e nvim /home/rafael/dotfiles")),
+    Key([mod], "p", lazy.spawn("alacritty -e nvim /home/rafael/Workspace/Development/Projects/PhD/Projects/AVSH/__devs/paper-modecoefficients")),
     Key([mod], "d", lazy.spawn("atom -n /home/rafael/Workspace/Development/Projects/MSc/RafaelBenevides-MScProject/dissertation --in-process-gpu")),
     Key([mod], "z", lazy.spawn("zathura /home/rafael/Workspace/Development/Projects/MSc/RafaelBenevides-MScProject/dissertation/main.pdf")),
     Key([mod], "a", lazy.spawn("atom -n /home/rafael/Workspace/Development/Projects/MSc/RafaelBenevides-MScProject/presentation --in-process-gpu")),
@@ -611,17 +634,17 @@ layouts = [
 ]
 
 colors = [
-    ["#282a36", "#282a36"], # panel background
-    ["#434758", "#434758"], # background for current screen tab
-    ["#ffffff", "#ffffff"], # font colour for group names
-    ["#ff5555", "#ff5555"], # background colour for layout widget
-    ["#000000", "#000000"], # background for other screen tabs
-    ["#a77ac4", "#a77ac4"], # dark green radiant for other screen tabs
-    ["#50fa7b", "#50fa7b"], # background colour for network widget
-    ["#7197e7", "#7197e7"], # background colour for pacman widget
-    ["#9aedfe", "#9aedfe"], # background colour for cmus widget
-    ["#000000", "#000000"], # background colour for clock widget
-    ["#434758", "#434758"], # background colour for systray widget
+    ["#282a36", "#282a36"],  # panel background
+    ["#434758", "#434758"],  # background for current screen tab
+    ["#ffffff", "#ffffff"],  # font colour for group names
+    ["#ff5555", "#ff5555"],  # background colour for layout widget
+    ["#000000", "#000000"],  # background for other screen tabs
+    ["#a77ac4", "#a77ac4"],  # dark green radiant for other screen tabs
+    ["#50fa7b", "#50fa7b"],  # background colour for network widget
+    ["#7197e7", "#7197e7"],  # background colour for pacman widget
+    ["#9aedfe", "#9aedfe"],  # background colour for cmus widget
+    ["#000000", "#000000"],  # background colour for clock widget
+    ["#434758", "#434758"],  # background colour for systray widget
 ]
 
 # ---------- ---------- ---------- ---------- ---------- ---------- groupbox
@@ -688,10 +711,29 @@ if hostname in ['sagittarius', 'divenger']:
                     widget.Sep(linewidth=0, padding=2),
                     *ram, widget.Sep(linewidth=0, padding=6),
                     *cpu, widget.Sep(linewidth=0, padding=6),
+                    *net, widget.Sep(linewidth=0, padding=6),
                     *WidgetContainer(
                         widget.Bluetooth(hci='/dev_F8_AB_E5_26_D7_5B', **colours['clock'], **widget_defaults),
                         icon_char='\uf5ae'), widget.Sep(linewidth=0, padding=6),
-                    # *WidgetContainer(widget.Volume(fmt=" {}", **widget_defaults, **colours['systray']), icon_char='\ufa7d'),
+                    *WidgetContainer(widget.Volume(fmt=" {}", **widget_defaults, **colours['systray']), icon_char='\ufa7d'),
+                    widget.Sep(linewidth=0, padding=6),
+                    widget.TaskList(
+                        # highlight_method='block',
+                        parse_text=lambda x: '',
+                        border=None,
+                        # unfocused_border='1D2330',
+                        # background='#181A29',
+                        txt_floating='',
+                        txt_maximized='',
+                        txt_minimized='',
+                        icon_size=16,
+                        fontsize=10,
+                        padding_x=5,
+                        margin_x=0,
+                        # markup_focused=''
+
+                        # **widget_defaults
+                    ),
                     widget.Spacer(),
                     *WidgetContainer(groupbox0),
                     widget.Spacer(),
@@ -711,12 +753,29 @@ if hostname in ['sagittarius', 'divenger']:
                 border_width=0
             ),
             wallpaper='/home/rafael/Workspace/Pictures/Wallpaper/single/9khyjmypmg471.jpg'
+            # wallpaper='/home/rafael/Workspace/Pictures/Wallpaper/triple/plasma/earth-left.jpg'
         ),
         Screen(
             top=bar.Bar(
                 widgets=[
                     widget.Sep(linewidth=0, padding=2),
+                    widget.TaskList(
+                        # highlight_method='block',
+                        parse_text=lambda x: '',
+                        border=None,
+                        # unfocused_border='1D2330',
+                        # background='#181A29',
+                        txt_floating='',
+                        txt_maximized='',
+                        txt_minimized='',
+                        # icon_size=4,
+                        fontsize=10,
+                        padding_x=5,
+                        margin_x=0,
+                        # markup_focused=''
 
+                        # **widget_defaults
+                    ),
                     widget.Spacer(),
                     *WidgetContainer(groupbox1),
                     widget.Spacer(),
@@ -736,6 +795,7 @@ if hostname in ['sagittarius', 'divenger']:
                 border_width=0
             ),
             wallpaper='/home/rafael/Workspace/Pictures/Wallpaper/single/9khyjmypmg471.jpg'
+            # wallpaper='/home/rafael/Workspace/Pictures/Wallpaper/triple/plasma/earth-centre.jpg'
         ),
         Screen(
             top=bar.Bar(
@@ -743,7 +803,25 @@ if hostname in ['sagittarius', 'divenger']:
                     # widget.Sep(linewidth=0, padding=2),
                     # *ram, widget.Sep(linewidth=0, padding=6),
                     # *cpu, widget.Sep(linewidth=0, padding=6),
-                    *net, widget.Sep(linewidth=0, padding=6),
+
+                    widget.TaskList(
+                        # highlight_method='block',
+                        parse_text=lambda x: '',
+                        # border="93bbff",
+                        border=None,
+                        # unfocused_border='1D2330',
+                        # background='#181A29',
+                        txt_floating='',
+                        txt_maximized='',
+                        txt_minimized='',
+                        # icon_size=4,
+                        fontsize=10,
+                        padding_x=5,
+                        margin_x=0,
+                        # markup_focused=''
+
+                        # **widget_defaults
+                    ),
                     widget.Spacer(),
                     *WidgetContainer(groupbox2),
                     widget.Spacer(),
@@ -764,6 +842,7 @@ if hostname in ['sagittarius', 'divenger']:
                 border_width=0
             ),
             wallpaper='/home/rafael/Workspace/Pictures/Wallpaper/single/9khyjmypmg471.jpg'
+            # wallpaper='/home/rafael/Workspace/Pictures/Wallpaper/triple/plasma/earth-right.jpg'
         )
     ]
 
