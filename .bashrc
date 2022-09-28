@@ -6,7 +6,10 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
-PS1='[\u@\h \W]\$ '
+# PS1='[\u@\h \W]\$ '
+
+PS1="\[\033[32m\]異 \[\033[37m\]\[\033[34m\]\W \[\033[0m\]\$ "
+PS2="\[\033[32m\]  > \[\033[0m\]"
 
 export VISUAL=nvim;
 export EDITOR=nvim;
@@ -23,3 +26,4 @@ fi
 export PATH="$HOME/texmf/tex/latex/sparta:$PATH"
 export QT_STYLE_OVERRIDE=kvantum
 export PATH="$HOME/texmf/tex/latex/equinox:$PATH"
+export PATH="$HOME/texmf/tex/latex/sparta:$PATH"
