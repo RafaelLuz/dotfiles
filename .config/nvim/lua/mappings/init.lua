@@ -15,6 +15,7 @@ map('i', '<C-k>', '<Esc>:m .-2<CR>', opts)
 
 -- nvim-tree
 map('n', '<leader>\\', ':NvimTreeToggle<CR>', opts)
+map('n', "<A-'>", ':NvimTreeFocus<CR>', opts)
 
 --------------------------- BARBAR
 -- Move to previous/next
