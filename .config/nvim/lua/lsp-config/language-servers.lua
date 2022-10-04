@@ -87,3 +87,6 @@ require('lspconfig').texlab.setup{
         }
     }
 }
+
+require('lspconfig').esbonio.setup{}
+
