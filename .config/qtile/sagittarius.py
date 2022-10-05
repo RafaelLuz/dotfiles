@@ -504,7 +504,7 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 foreground="#101213",
                 background=self.grey,
                 padding=0,
-                fontsize=35,
+                fontsize=20,
             ),
             widget.CurrentLayoutIcon(
                 background=self.grey,
@@ -521,7 +521,7 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 # background="#27292a",
                 foreground=self.grey,
                 padding=0,
-                fontsize=35,
+                fontsize=20,
             ),
             widget.Spacer(),
             widget.Systray(),
@@ -530,7 +530,7 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 text='\uE0B2',
                 foreground=self.grey,
                 padding=0,
-                fontsize=35
+                fontsize=20
             ),
             widget.TextBox(
                 text='  ',
@@ -542,7 +542,7 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 background=self.grey,
                 foreground=self.blue,
                 padding=0,
-                fontsize=35
+                fontsize=20
             ),
             widget.TextBox(
                 text='  ',
@@ -554,7 +554,7 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 background=self.blue,
                 foreground=self.pink,
                 padding=0,
-                fontsize=35
+                fontsize=20
             ),
             widget.TextBox(
                 text='  ',
@@ -566,7 +566,7 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 background=self.pink,
                 foreground=self.orange,
                 padding=0,
-                fontsize=35
+                fontsize=20
             ),
             widget.TextBox(
                 text='  ',
@@ -578,7 +578,7 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 background=self.orange,
                 foreground=self.green,
                 padding=0,
-                fontsize=35
+                fontsize=20
             ),
             widget.TextBox(
                 text='  ',
@@ -590,7 +590,7 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 background=self.green,
                 foreground=self.yellow,
                 padding=0,
-                fontsize=35
+                fontsize=20
             ),
             widget.TextBox(
                 text='  ',
@@ -619,7 +619,7 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 foreground="#101213",
                 background=self.grey,
                 padding=0,
-                fontsize=35,
+                fontsize=20,
             ),
             widget.CurrentLayoutIcon(
                 background=self.grey,
@@ -636,14 +636,14 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 # background="#27292a",
                 foreground=self.grey,
                 padding=0,
-                fontsize=35,
+                fontsize=20,
             ),
             widget.Spacer(),
             widget.TextBox(
                 text='\uE0B2',
                 foreground=self.grey,
                 padding=0,
-                fontsize=35
+                fontsize=20
             ),
             # widget.TextBox(
             #     text='  ',
@@ -660,7 +660,7 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 background=self.grey,
                 foreground=self.blue,
                 padding=0,
-                fontsize=35
+                fontsize=20
             ),
             # widget.TextBox(
             #     text='  ',
@@ -676,7 +676,7 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 background=self.blue,
                 foreground=self.pink,
                 padding=0,
-                fontsize=35
+                fontsize=20
             ),
             # widget.TextBox(
             #     text='  ',
@@ -692,7 +692,7 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 background=self.pink,
                 foreground=self.orange,
                 padding=0,
-                fontsize=35
+                fontsize=20
             ),
             widget.Memory(
                 format=' {MemUsed:2.1f}{mm} / {MemTotal:.1f}{mm}',
@@ -704,7 +704,7 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 background=self.orange,
                 foreground=self.green,
                 padding=0,
-                fontsize=35
+                fontsize=20
             ),
             widget.CPU(
                 format='\uF85A {load_percent:>2.0f}%',
@@ -715,7 +715,7 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 background=self.green,
                 foreground=self.yellow,
                 padding=0,
-                fontsize=35
+                fontsize=20
             ),
             widget.Net(
                 background=self.yellow,
@@ -743,7 +743,7 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 foreground="#101213",
                 background=self.grey,
                 padding=0,
-                fontsize=35,
+                fontsize=20,
             ),
             widget.CurrentLayoutIcon(
                 background=self.grey,
@@ -760,26 +760,26 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 # background="#27292a",
                 foreground=self.grey,
                 padding=0,
-                fontsize=35,
+                fontsize=20,
             ),
             widget.Spacer(),
             widget.TextBox(
                 text='\uE0B2',
                 foreground=self.grey,
                 padding=0,
-                fontsize=35
+                fontsize=20
             ),
-            widget.TextBox(
-                text='  ',
-                background=self.grey,
-                padding=0,
-            ),
+            # widget.TextBox(
+            #     text='  ',
+            #     background=self.grey,
+            #     padding=0,
+            # ),
             widget.TextBox(
                 text='\uE0B2',
                 foreground=self.blue,
                 background=self.grey,
                 padding=0,
-                fontsize=35
+                fontsize=20
             ),
             # widget.TextBox(
             #     text='  ',
@@ -798,7 +798,7 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 foreground=self.pink,
                 background=self.blue,
                 padding=0,
-                fontsize=35
+                fontsize=20
             ),
             widget.Bluetooth(
                 hci='/dev_F8_AB_E5_26_D7_5B',
@@ -810,7 +810,7 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 foreground=self.orange,
                 background=self.pink,
                 padding=0,
-                fontsize=35
+                fontsize=20
             ),
             widget.Volume(
                 fmt="\ufa7d {}",
@@ -821,7 +821,7 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 foreground=self.green,
                 background=self.orange,
                 padding=0,
-                fontsize=35
+                fontsize=20
             ),
             widget.OpenWeather(
                 location='brasilia',
@@ -833,7 +833,7 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 background=self.green,
                 foreground=self.yellow,
                 padding=0,
-                fontsize=35
+                fontsize=20
             ),
             widget.Clock(
                 format='\uf64f  %Y-%m-%d  %a  %H:%M:%S',
