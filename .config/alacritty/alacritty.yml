@@ -30,15 +30,19 @@ scrolling:
   multiplier: 3
 
 font:
-  # bold:
-  #   family: Mononoki Nerd Font
-  #
-  # italic:
-  #   family: Mononoki Nerd Font
-  #
-  # normal:
-  #   family: Mononoki Nerd Font
-  #   style: Regular
+  
+  bold:
+    # family: Sauce Code Pro Nerd Font
+    family: Hack Nerd Font Mono
+  
+  italic:
+    # family: Sauce Code Pro Nerd Font
+    family: Hack Nerd Font Mono
+  
+  normal:
+    # family: Sauce Code Pro Nerd Font
+    family: Hack Nerd Font Mono
+    style: Regular
 
   size: 11.0
 

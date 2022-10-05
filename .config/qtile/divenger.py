@@ -21,7 +21,7 @@ from libqtile.utils import guess_terminal
 from settings import QtileConfig, colours
 
 
-class SagittariusCatppuccinConfig(QtileConfig):
+class DivengerCatppuccinConfig(QtileConfig):
 
     bg = '#1D1D2D'
     fg = '#CDD6F4'
@@ -532,11 +532,11 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 padding=0,
                 fontsize=20
             ),
-            widget.TextBox(
-                text='  ',
-                background=self.grey,
-                padding=0,
-            ),
+            # widget.TextBox(
+            #     text='  ',
+            #     background=self.grey,
+            #     padding=0,
+            # ),
             widget.TextBox(
                 text='\uE0B2',
                 background=self.grey,
@@ -544,11 +544,11 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 padding=0,
                 fontsize=20
             ),
-            widget.TextBox(
-                text='  ',
-                background=self.blue,
-                padding=0,
-            ),
+            # widget.TextBox(
+            #     text='  ',
+            #     background=self.blue,
+            #     padding=0,
+            # ),
             widget.TextBox(
                 text='\uE0B2',
                 background=self.blue,
@@ -556,11 +556,11 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 padding=0,
                 fontsize=20
             ),
-            widget.TextBox(
-                text='  ',
-                background=self.pink,
-                padding=0,
-            ),
+            # widget.TextBox(
+            #     text='  ',
+            #     background=self.pink,
+            #     padding=0,
+            # ),
             widget.TextBox(
                 text='\uE0B2',
                 background=self.pink,
@@ -568,11 +568,11 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 padding=0,
                 fontsize=20
             ),
-            widget.TextBox(
-                text='  ',
-                background=self.orange,
-                padding=0,
-            ),
+            # widget.TextBox(
+            #     text='  ',
+            #     background=self.orange,
+            #     padding=0,
+            # ),
             widget.TextBox(
                 text='\uE0B2',
                 background=self.orange,
@@ -580,11 +580,11 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 padding=0,
                 fontsize=20
             ),
-            widget.TextBox(
-                text='  ',
-                background=self.green,
-                padding=0,
-            ),
+            # widget.TextBox(
+            #     text='  ',
+            #     background=self.green,
+            #     padding=0,
+            # ),
             widget.TextBox(
                 text='\uE0B2',
                 background=self.green,
@@ -592,11 +592,11 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 padding=0,
                 fontsize=20
             ),
-            widget.TextBox(
-                text='  ',
-                background=self.yellow,
-                padding=0,
-            ),
+            # widget.TextBox(
+            #     text='  ',
+            #     background=self.yellow,
+            #     padding=0,
+            # ),
         ]
 
         bar_left = bar.Bar(widgets=widgets_left, **bar_params)
@@ -650,11 +650,6 @@ class SagittariusCatppuccinConfig(QtileConfig):
             #     background=self.grey,
             #     padding=0,
             # ),
-            widget.NvidiaSensors(
-                background=self.grey,
-                foreground=self.fg,
-                format='{perf}'
-            ),
             widget.TextBox(
                 text='\uE0B2',
                 background=self.grey,
@@ -667,25 +662,12 @@ class SagittariusCatppuccinConfig(QtileConfig):
             #     background=self.blue,
             #     padding=0,
             # ),
-            widget.NvidiaSensors(
-                background=self.blue,
-                format='\uf70f {fan_speed}'
-            ),
             widget.TextBox(
                 text='\uE0B2',
                 background=self.blue,
                 foreground=self.pink,
                 padding=0,
                 fontsize=20
-            ),
-            # widget.TextBox(
-            #     text='  ',
-            #     background=self.pink,
-            #     padding=0,
-            # ),
-            widget.NvidiaSensors(
-                background=self.pink,
-                format='\uf92d {temp}ºC'
             ),
             widget.TextBox(
                 text='\uE0B2',
@@ -694,11 +676,11 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 padding=0,
                 fontsize=20
             ),
-            widget.Memory(
-                format=' {MemUsed:2.1f}{mm} / {MemTotal:.1f}{mm}',
-                measure_mem='G',
-                background=self.orange,
-            ),
+            # widget.Memory(
+            #     format=' {MemUsed:2.1f}{mm} / {MemTotal:.1f}{mm}',
+            #     measure_mem='G',
+            #     background=self.orange,
+            # ),
             widget.TextBox(
                 text='\uE0B2',
                 background=self.orange,
@@ -706,10 +688,10 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 padding=0,
                 fontsize=20
             ),
-            widget.CPU(
-                format='\uF85A {load_percent:>2.0f}%',
-                background=self.green
-            ),
+            # widget.CPU(
+            #     format='\uF85A {load_percent:>2.0f}%',
+            #     background=self.green
+            # ),
             widget.TextBox(
                 text='\uE0B2',
                 background=self.green,
@@ -717,10 +699,10 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 padding=0,
                 fontsize=20
             ),
-            widget.Net(
-                background=self.yellow,
-                format='{down}\uf175 {up}\uf176',
-            ),
+            # widget.Net(
+            #     background=self.yellow,
+            #     format='{down}\uf175 {up}\uf176',
+            # ),
         ]
 
         bar_centre = bar.Bar(widgets=widgets_centre, **bar_params)
@@ -781,18 +763,11 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 padding=0,
                 fontsize=20
             ),
-            # widget.TextBox(
-            #     text='  ',
-            #     background=self.blue,
-            #     padding=0,
-            # ),
-            # widget.CheckUpdates(
-            #     background=self.blue,
-            #     foreground=self.black,
-            #     distro='Arch_checkupdates',
-            #     display_format='  {updates}',
-            #     no_update_string='  0'
-            # ),
+            widget.Net(
+                # foreground=self.grey,
+                background=self.blue,
+                format='{down}\uf175 {up}\uf176',
+            ),
             widget.TextBox(
                 text='\uE0B2',
                 foreground=self.pink,
@@ -800,10 +775,9 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 padding=0,
                 fontsize=20
             ),
-            widget.Bluetooth(
-                hci='/dev_F8_AB_E5_26_D7_5B',
-                fmt="\uf5ae {}",
-                background=self.pink,
+            widget.CPU(
+                format='\uF85A {load_percent:>2.0f}%',
+                background=self.pink
             ),
             widget.TextBox(
                 text='\uE0B2',
@@ -812,8 +786,9 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 padding=0,
                 fontsize=20
             ),
-            widget.Volume(
-                fmt="\ufa7d {}",
+            widget.Memory(
+                format=' {MemUsed:2.1f}{mm} / {MemTotal:.1f}{mm}',
+                measure_mem='G',
                 background=self.orange,
             ),
             widget.TextBox(
@@ -868,4 +843,4 @@ class SagittariusCatppuccinConfig(QtileConfig):
         }
 
 
-config = SagittariusCatppuccinConfig()
+config = DivengerCatppuccinConfig()
