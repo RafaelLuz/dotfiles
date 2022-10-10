@@ -25,6 +25,7 @@ vim.opt.scrolloff = 8               -- minimum nr. of lines above and below curs
 vim.opt.clipboard = "unnamedplus"   -- use the clipboard as the unnamed register. Refer to https://neovim.io/doc/user/options.html#'clipboard'
 vim.opt.wrap = false                -- long lines wrap and continue on the next line
 vim.opt.splitright = true           -- new window is put right of the current one
+vim.opt.spell = true
 vim.opt.spelllang = 'en_gb'
 vim.opt.hidden = true               -- don't unload buffer when it is abandoned
 vim.opt.colorcolumn = '81'

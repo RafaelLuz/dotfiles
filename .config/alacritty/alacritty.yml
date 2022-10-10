@@ -24,7 +24,7 @@ window:
     x: 5
     y: 5
 
-  opacity: 0.7
+  opacity: 0.85
 
 scrolling:
   multiplier: 3
