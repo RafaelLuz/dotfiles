@@ -27,5 +27,5 @@ vim.opt.wrap = false                -- long lines wrap and continue on the next 
 vim.opt.splitright = true           -- new window is put right of the current one
 vim.opt.spelllang = 'en_gb'
 vim.opt.hidden = true               -- don't unload buffer when it is abandoned
-vim.opt.colorcolumn = '81'
+-- vim.opt.colorcolumn = '81'
 vim.opt.mouse = 'a'

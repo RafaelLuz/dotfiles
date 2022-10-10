@@ -600,8 +600,8 @@ class SagittariusCatppuccinConfig(QtileConfig):
         ]
 
         bar_left = bar.Bar(widgets=widgets_left, **bar_params)
-        wallpaper_left = '/home/rafael/Workspace/Pictures/Wallpaper/single/9khyjmypmg471.jpg'
-        screen_left = Screen(top=bar_left, wallpaper=wallpaper_left)
+        wallpaper_left = '/home/rafael/Workspace/Pictures/Wallpaper/single/filtered/W0221.jpg'
+        screen_left = Screen(top=bar_left, wallpaper=wallpaper_left, wallpaper_mode='fill')
 
         # ---------- ---------- ---------- ---------- ---------- centre
         widgets_centre = [
@@ -724,7 +724,9 @@ class SagittariusCatppuccinConfig(QtileConfig):
         ]
 
         bar_centre = bar.Bar(widgets=widgets_centre, **bar_params)
-        wallpaper_centre = '/home/rafael/Workspace/Pictures/Wallpaper/single/9khyjmypmg471.jpg'
+        # wallpaper_centre = '/home/rafael/Workspace/Pictures/Wallpaper/single/9khyjmypmg471.jpg'
+        # wallpaper_centre = '/home/rafael/Workspace/Pictures/Wallpaper/single/filtered/W134.jpg'
+        wallpaper_centre = '/home/rafael/Workspace/Pictures/Wallpaper/single/filtered/W0126.jpg'
         screen_centre = Screen(top=bar_centre, wallpaper=wallpaper_centre)
 
         # ---------- ---------- ---------- ---------- ---------- right
@@ -842,7 +844,9 @@ class SagittariusCatppuccinConfig(QtileConfig):
         ]
 
         bar_right = bar.Bar(widgets=widgets_right, **bar_params)
-        wallpaper_right = '/home/rafael/Workspace/Pictures/Wallpaper/single/9khyjmypmg471.jpg'
+        # wallpaper_right = '/home/rafael/Workspace/Pictures/Wallpaper/single/9khyjmypmg471.jpg'
+        # wallpaper_right = '/home/rafael/Workspace/Pictures/Wallpaper/single/filtered/W0135.png'
+        wallpaper_right = '/home/rafael/Workspace/Pictures/Wallpaper/single/filtered/W0120.jpg'
         screen_right = Screen(top=bar_right, wallpaper=wallpaper_right)
 
         # ---------- ---------- ---------- ---------- ---------- returning
