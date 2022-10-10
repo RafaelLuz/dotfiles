@@ -706,8 +706,8 @@ class DivengerCatppuccinConfig(QtileConfig):
         ]
 
         bar_centre = bar.Bar(widgets=widgets_centre, **bar_params)
-        wallpaper_centre = '/home/rafael/Workspace/Pictures/Wallpaper/single/9khyjmypmg471.jpg'
-        screen_centre = Screen(top=bar_centre, wallpaper=wallpaper_centre)
+        wallpaper_centre = '/home/rafael/Workspace/Pictures/Wallpaper/single/filtered/W0126.jpg'
+        screen_centre = Screen(top=bar_centre, wallpaper=wallpaper_centre, wallpaper_mode='fill')
 
         # ---------- ---------- ---------- ---------- ---------- right
         widgets_right = [
@@ -756,6 +756,9 @@ class DivengerCatppuccinConfig(QtileConfig):
             #     background=self.grey,
             #     padding=0,
             # ),
+            widget.Volume(
+                background=self.grey
+            ),
             widget.TextBox(
                 text='\uE0B2',
                 foreground=self.blue,
@@ -817,8 +820,9 @@ class DivengerCatppuccinConfig(QtileConfig):
         ]
 
         bar_right = bar.Bar(widgets=widgets_right, **bar_params)
-        wallpaper_right = '/home/rafael/Workspace/Pictures/Wallpaper/single/9khyjmypmg471.jpg'
-        screen_right = Screen(top=bar_right, wallpaper=wallpaper_right)
+        # wallpaper_right = '/home/rafael/Workspace/Pictures/Wallpaper/single/9khyjmypmg471.jpg'
+        wallpaper_right = '/home/rafael/Workspace/Pictures/Wallpaper/single/filtered/W0014.png'
+        screen_right = Screen(top=bar_right, wallpaper=wallpaper_right, wallpaper_mode='fill')
 
         # ---------- ---------- ---------- ---------- ---------- returning
         return [screen_left, screen_centre, screen_right]
