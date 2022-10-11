@@ -203,9 +203,23 @@ class DivengerCatppuccinConfig(QtileConfig):
                         layout.Stack(
                             num_stacks=1,
                             margin=9,
-                            border_focus="93bbff",
+                            border_fo2cus="93bbff",
                             border_normal="1D2330",
                             border_width=2,
+                        ),
+                        layout.Matrix(
+                            margin=9,
+                            border_fo2cus="93bbff",
+                            border_normal="1D2330",
+                            border_width=2,
+                            columns=2
+                        ),
+                        layout.Matrix(
+                            margin=9,
+                            border_fo2cus="93bbff",
+                            border_normal="1D2330",
+                            border_width=2,
+                            columns=3
                         )
                     ],
                     'matches': [pycharm_exit_dialog]
