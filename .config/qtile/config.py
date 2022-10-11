@@ -17,7 +17,7 @@ match hostname:
         from sagittarius import config
 
     case 'cygnusX1':
-        pass
+        from cygnusX1 import config
 
     case 'divenger':
         from divenger import config
