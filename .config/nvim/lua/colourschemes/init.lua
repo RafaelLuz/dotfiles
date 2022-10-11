@@ -15,5 +15,5 @@ require("catppuccin").setup({
 
 
 vim.cmd [[colorscheme catppuccin]]
-vim.cmd [[hi NvimTreeWinSeparator guifg=#1e2030]]
+vim.cmd [[hi NvimTreeWinSeparator guifg=#cad3f5 ]]
 
