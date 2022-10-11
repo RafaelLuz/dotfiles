@@ -203,20 +203,20 @@ class DivengerCatppuccinConfig(QtileConfig):
                         layout.Stack(
                             num_stacks=1,
                             margin=9,
-                            border_fo2cus="93bbff",
+                            border_focus="93bbff",
                             border_normal="1D2330",
                             border_width=2,
                         ),
                         layout.Matrix(
                             margin=9,
-                            border_fo2cus="93bbff",
+                            border_focus="93bbff",
                             border_normal="1D2330",
                             border_width=2,
                             columns=2
                         ),
                         layout.Matrix(
                             margin=9,
-                            border_fo2cus="93bbff",
+                            border_focus="93bbff",
                             border_normal="1D2330",
                             border_width=2,
                             columns=3
@@ -469,6 +469,7 @@ class DivengerCatppuccinConfig(QtileConfig):
 
                 Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
                 Key([mod], "m", lazy.spawn("slock")),
+                Key([mod], "c", lazy.spawn("alacritty -e nvim /home/rafael/dotfiles")),
                 Key([mod], "space", lazy.next_layout(), desc="Toggle between layouts"),
                 Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
 
