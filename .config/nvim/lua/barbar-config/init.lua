@@ -66,4 +66,4 @@ require'bufferline'.setup {
   no_name_title = nil,
 }
 
-require'bufferline.state'.set_offset(30, 'File Explorer')
+require'bufferline.state'.set_offset(31, 'File Explorer')
