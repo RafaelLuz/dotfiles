@@ -30,3 +30,4 @@ vim.opt.spelllang = 'en_gb'
 vim.opt.hidden = true               -- don't unload buffer when it is abandoned
 -- vim.opt.colorcolumn = '81'
 vim.opt.mouse = 'a'
+vim.opt.termguicolors = true
