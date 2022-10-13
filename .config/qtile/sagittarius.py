@@ -35,6 +35,18 @@ class SagittariusCatppuccinConfig(QtileConfig):
     grey = '#343637'
     pink = '#F5C2E7'
 
+    def __init__(self) -> None:
+        super().__init__()
+
+        self.telegram = Match(wm_class="telegram-desktop")
+        self.vivaldi = Match(wm_class="vivaldi-stable")
+        self.zathura = Match(wm_class='Zathura')
+        self.matplotlib = Match(wm_class='matplotlib')
+        self.vtk = Match(wm_class='vtk')
+        self.pycharm_exit_dialog = Match(wm_class='jetbrains-pycharm', title='Confirm Exit')
+        self.smet = Match(title='SMET')
+
+
     @property
     def groups(self) -> List[Group]:
 
@@ -43,12 +55,6 @@ class SagittariusCatppuccinConfig(QtileConfig):
 
         except AttributeError:
 
-            telegram = Match(wm_class="telegram-desktop")
-            vivaldi = Match(wm_class="vivaldi-stable")
-            zathura = Match(wm_class='Zathura')
-            matplotlib = Match(wm_class='matplotlib')
-            vtk = Match(wm_class='vtk')
-            pycharm_exit_dialog = Match(wm_class='jetbrains-pycharm', title='Confirm Exit')
 
             groups = [
                 # ===================================================================== Left
@@ -162,7 +168,7 @@ class SagittariusCatppuccinConfig(QtileConfig):
                             border_width=2,
                         )
                     ],
-                    'matches': [pycharm_exit_dialog]
+                    'matches': [self.pycharm_exit_dialog]
                 },
                 {
                     'name': 'C2',
@@ -185,7 +191,7 @@ class SagittariusCatppuccinConfig(QtileConfig):
                             border_width=2,
                         )
                     ],
-                    'matches': [pycharm_exit_dialog]
+                    'matches': [self.pycharm_exit_dialog]
                 },
                 {
                     'name': 'C3',
@@ -206,9 +212,23 @@ class SagittariusCatppuccinConfig(QtileConfig):
                             border_focus="93bbff",
                             border_normal="1D2330",
                             border_width=2,
+                        ),
+                        layout.Matrix(
+                            margin=9,
+                            border_focus="93bbff",
+                            border_normal="1D2330",
+                            border_width=2,
+                            columns=2
+                        ),
+                        layout.Matrix(
+                            margin=9,
+                            border_focus="93bbff",
+                            border_normal="1D2330",
+                            border_width=2,
+                            columns=3
                         )
                     ],
-                    'matches': [pycharm_exit_dialog]
+                    'matches': [self.pycharm_exit_dialog]
                 },
                 {
                     'name': 'C4',
@@ -231,7 +251,7 @@ class SagittariusCatppuccinConfig(QtileConfig):
                             border_width=2,
                         )
                     ],
-                    'matches': [pycharm_exit_dialog]
+                    'matches': [self.pycharm_exit_dialog]
                 },
                 # ==================================================================== Right
                 {
@@ -255,7 +275,7 @@ class SagittariusCatppuccinConfig(QtileConfig):
                             border_width=2,
                         )
                     ],
-                    'matches': [matplotlib, vtk]
+                    'matches': [self.matplotlib, self.vtk]
                 },
                 {
                     'name': 'R2',
@@ -278,7 +298,8 @@ class SagittariusCatppuccinConfig(QtileConfig):
                             border_width=2,
                         )
                     ],
-                    'matches': [matplotlib, vtk]},
+                    'matches': [self.matplotlib, self.vtk]
+                },
                 {
                     'name': 'R3',
                     'label': '',
@@ -300,7 +321,7 @@ class SagittariusCatppuccinConfig(QtileConfig):
                             border_width=2,
                         )
                     ],
-                    'matches': [matplotlib, vtk]
+                    'matches': [self.matplotlib, self.vtk]
                 },
                 {
                     'name': 'R4',
@@ -870,6 +891,30 @@ class SagittariusCatppuccinConfig(QtileConfig):
             'background': '#00000000',
             'foreground': self.black
         }
+
+    @property
+    def floating_layout(self):
+        """
+        The default floating layout to use. This allows you to set custom
+        floating rules among other things if you wish.
+
+        See the configuration file for the default float_rules.
+        """
+        return layout.Floating(
+            float_rules=[
+                # Run the utility of `xprop` to see the wm class and name of an X client.
+                *layout.Floating.default_float_rules[:-1],
+                Match(wm_class="confirmreset"),  # gitk
+                Match(wm_class="makebranch"),  # gitk
+                Match(wm_class="maketag"),  # gitk
+                Match(wm_class="ssh-askpass"),  # ssh-askpass
+                Match(title="branchdialog"),  # gitk
+                Match(title="pinentry"),  # GPG key password entry
+                self.matplotlib,
+                self.vtk,
+                self.smet
+            ]
+        )
 
 
 config = SagittariusCatppuccinConfig()
