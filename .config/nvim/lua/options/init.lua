@@ -26,8 +26,12 @@ vim.opt.clipboard = "unnamedplus"   -- use the clipboard as the unnamed register
 vim.opt.wrap = false                -- long lines wrap and continue on the next line
 vim.opt.splitright = true           -- new window is put right of the current one
 vim.opt.spell = true
-vim.opt.spelllang = 'en_gb'
+vim.opt.spelllang = 'en_gb,pt_br'
 vim.opt.hidden = true               -- don't unload buffer when it is abandoned
 -- vim.opt.colorcolumn = '81'
 vim.opt.mouse = 'a'
 vim.opt.termguicolors = true
+
+vim.diagnostic.config({
+    virtual_text=false,
+})

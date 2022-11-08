@@ -65,7 +65,7 @@ map('n', '<C-j>', '<C-w>j', opts)
 map('n', '<C-k>', '<C-w>k', opts)
 map('n', '<C-l>', '<C-w>l', opts)
 
-map('n', '<A-r>', '<Cmd>w|!make html<CR>', opts)
+map('n', '<A-r>', '<Cmd>wa|!make<CR>', opts)
 
 vim.cmd[[nnoremap <expr> j v:count ? 'j' : 'gj']]
 vim.cmd[[nnoremap <expr> k v:count ? 'k' : 'gk']]

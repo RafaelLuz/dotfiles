@@ -46,7 +46,6 @@ class SagittariusCatppuccinConfig(QtileConfig):
         self.pycharm_exit_dialog = Match(wm_class='jetbrains-pycharm', title='Confirm Exit')
         self.smet = Match(title='SMET')
 
-
     @property
     def groups(self) -> List[Group]:
 
@@ -889,6 +888,7 @@ class SagittariusCatppuccinConfig(QtileConfig):
             'padding': 4,
             # 'background': self.bg,
             'background': '#00000000',
+            'fontshadow': None,
             'foreground': self.black
         }
 

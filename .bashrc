@@ -23,7 +23,7 @@ if [ -d "$HOME/.pyenv" ]; then
   eval "$(pyenv virtualenv-init -)"
 fi
 
-export PATH="$HOME/texmf/tex/latex/sparta:$PATH"
 export QT_STYLE_OVERRIDE=kvantum
 export PATH="$HOME/texmf/tex/latex/equinox:$PATH"
 export PATH="$HOME/texmf/tex/latex/sparta:$PATH"
+export PATH="$HOME/texmf/tex/latex/copeTD:$PATH"
