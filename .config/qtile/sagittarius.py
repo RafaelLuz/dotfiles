@@ -544,6 +544,13 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 fontsize=20,
             ),
             widget.Spacer(),
+            widget.TextBox(
+                text='Do it for them',
+                foreground=self.cyan,
+                padding=0,
+                fontsize=20
+            ),
+            widget.Spacer(),
             widget.Systray(),
             widget.Spacer(length=10),
             widget.TextBox(
@@ -658,6 +665,15 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 padding=0,
                 fontsize=20,
             ),
+            widget.Spacer(),
+            widget.Image(filename='~/Workspace/Pictures/victor.jpg'),
+            widget.TextBox(
+                text='Do it for them',
+                foreground=self.orange,
+                padding=4,
+                fontsize=20
+            ),
+            widget.Image(filename='~/Workspace/Pictures/marina.jpeg'),
             widget.Spacer(),
             widget.TextBox(
                 text='\uE0B2',
@@ -783,6 +799,13 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 foreground=self.grey,
                 padding=0,
                 fontsize=20,
+            ),
+            widget.Spacer(),
+            widget.TextBox(
+                text='Do it for them',
+                foreground=self.pink,
+                padding=0,
+                fontsize=20
             ),
             widget.Spacer(),
             widget.TextBox(
