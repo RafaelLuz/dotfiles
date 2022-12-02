@@ -627,7 +627,9 @@ class SagittariusCatppuccinConfig(QtileConfig):
         ]
 
         bar_left = bar.Bar(widgets=widgets_left, **bar_params)
-        wallpaper_left = '/home/rafael/Workspace/Pictures/Wallpaper/single/filtered/W0221.jpg'
+        # wallpaper_left = '/home/rafael/Workspace/Pictures/Wallpaper/single/filtered/W0221.jpg'
+        # wallpaper_left = '/home/rafael/Workspace/Pictures/Wallpaper/single/filtered/W0315.jpg'
+        wallpaper_left = '/home/rafael/Workspace/Pictures/Wallpaper/triple/plasma/atmosphere-left.jpg'
         screen_left = Screen(top=bar_left, wallpaper=wallpaper_left, wallpaper_mode='fill')
 
         # ---------- ---------- ---------- ---------- ---------- centre
@@ -666,15 +668,15 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 fontsize=20,
             ),
             widget.Spacer(),
-            widget.Image(filename='~/Workspace/Pictures/victor.jpg'),
-            widget.TextBox(
-                text='Do it for them',
-                foreground=self.orange,
-                padding=4,
-                fontsize=20
-            ),
-            widget.Image(filename='~/Workspace/Pictures/marina.jpeg'),
-            widget.Spacer(),
+            # widget.Image(filename='~/Workspace/Pictures/victor.jpg'),
+            # widget.TextBox(
+            #     text='Do it for them',
+            #     foreground=self.orange,
+            #     padding=4,
+            #     fontsize=20
+            # ),
+            # widget.Image(filename='~/Workspace/Pictures/marina.jpeg'),
+            # widget.Spacer(),
             widget.TextBox(
                 text='\uE0B2',
                 foreground=self.grey,
@@ -762,7 +764,9 @@ class SagittariusCatppuccinConfig(QtileConfig):
         bar_centre = bar.Bar(widgets=widgets_centre, **bar_params)
         # wallpaper_centre = '/home/rafael/Workspace/Pictures/Wallpaper/single/9khyjmypmg471.jpg'
         # wallpaper_centre = '/home/rafael/Workspace/Pictures/Wallpaper/single/filtered/W134.jpg'
-        wallpaper_centre = '/home/rafael/Workspace/Pictures/Wallpaper/single/filtered/W0126.jpg'
+        # wallpaper_centre = '/home/rafael/Workspace/Pictures/Wallpaper/single/filtered/W0126.jpg'
+        # wallpaper_centre = '/home/rafael/Workspace/Pictures/Wallpaper/single/filtered/W0113.jpg'
+        wallpaper_centre = '/home/rafael/Workspace/Pictures/Wallpaper/triple/plasma/atmosphere-centre.jpg'
         screen_centre = Screen(top=bar_centre, wallpaper=wallpaper_centre)
 
         # ---------- ---------- ---------- ---------- ---------- right
@@ -889,7 +893,8 @@ class SagittariusCatppuccinConfig(QtileConfig):
         bar_right = bar.Bar(widgets=widgets_right, **bar_params)
         # wallpaper_right = '/home/rafael/Workspace/Pictures/Wallpaper/single/9khyjmypmg471.jpg'
         # wallpaper_right = '/home/rafael/Workspace/Pictures/Wallpaper/single/filtered/W0135.png'
-        wallpaper_right = '/home/rafael/Workspace/Pictures/Wallpaper/single/filtered/W0120.jpg'
+        # wallpaper_right = '/home/rafael/Workspace/Pictures/Wallpaper/single/filtered/W0017.jpg'
+        wallpaper_right = '/home/rafael/Workspace/Pictures/Wallpaper/triple/plasma/atmosphere-right.jpg'
         screen_right = Screen(top=bar_right, wallpaper=wallpaper_right)
 
         # ---------- ---------- ---------- ---------- ---------- returning
