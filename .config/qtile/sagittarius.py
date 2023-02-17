@@ -76,6 +76,16 @@ class SagittariusCatppuccinConfig(QtileConfig):
                             border_focus="93bbff",
                             border_normal="1D2330",
                             border_width=2,
+                        ),
+                        layout.Columns(
+                            num_columns = 3,
+                            ratio=0.75,
+                            margin=9,
+                            border_focus="93bbff",
+                            border_normal="1D2330",
+                            align=layout.MonadTall._right,
+                            border_width=2,
+                            single_border_width=2
                         )
                     ]
                 },
@@ -472,6 +482,7 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
                 Key([mod], "i", lazy.layout.grow()),
                 Key([mod], "o", lazy.layout.shrink()),
+                Key([mod], "f", lazy.window.toggle_floating()),
 
                 Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
                 Key([mod], "m", lazy.spawn("slock")),
@@ -544,13 +555,13 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 fontsize=20,
             ),
             widget.Spacer(),
-            widget.TextBox(
-                text='Do it for them',
-                foreground=self.cyan,
-                padding=0,
-                fontsize=20
-            ),
-            widget.Spacer(),
+            #widget.TextBox(
+            #    text='Do it for them',
+            #    foreground=self.cyan,
+            #    padding=0,
+            #    fontsize=20
+            #),
+            #widget.Spacer(),
             widget.Systray(),
             widget.Spacer(length=10),
             widget.TextBox(
@@ -619,11 +630,16 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 padding=0,
                 fontsize=20
             ),
-            widget.TextBox(
-                text='  ',
+            widget.Clock(
+                format='\uf64f  %Y-%m-%d %H:%M:%S UTC',
+                timezone='utc',
                 background=self.yellow,
-                padding=0,
             ),
+            #widget.TextBox(
+            #    text='  ',
+            #    background=self.yellow,
+            #    padding=0,
+            #),
         ]
 
         bar_left = bar.Bar(widgets=widgets_left, **bar_params)
@@ -805,13 +821,13 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 fontsize=20,
             ),
             widget.Spacer(),
-            widget.TextBox(
-                text='Do it for them',
-                foreground=self.pink,
-                padding=0,
-                fontsize=20
-            ),
-            widget.Spacer(),
+            #widget.TextBox(
+            #    text='Do it for them',
+            #    foreground=self.pink,
+            #    padding=0,
+            #    fontsize=20
+            #),
+            #widget.Spacer(),
             widget.TextBox(
                 text='\uE0B2',
                 foreground=self.grey,
@@ -940,7 +956,7 @@ class SagittariusCatppuccinConfig(QtileConfig):
                 Match(title="pinentry"),  # GPG key password entry
                 self.matplotlib,
                 self.vtk,
-                self.smet
+                #self.smet
             ]
         )
 
